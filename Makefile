@@ -1,6 +1,6 @@
 NAME = fdf
 
-SRC = fdf.c
+SRC = src/fdf.c
 
 INCLUDES = libft/libft.a
 
