@@ -18,7 +18,7 @@ int			main(int argc, char **argv)
 	t_point	***map;
 
 	if (argc != 2)
-		return (0);
+		error("indicate the path to the map");
 	map = validation(argv[1]);
 	return (0);
 }
