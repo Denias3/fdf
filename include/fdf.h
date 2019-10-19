@@ -23,8 +23,14 @@ typedef	struct		s_point
 	struct s_point	*next;
 }					t_point;
 
+typedef	struct		s_val
+{
+	int				max_point;
+}					t_val;
+
 int					validation(t_point *po);
 void				error(char *er);
 t_point				*create_point(void);
+t_val				*create_val(void);
 
 #endif

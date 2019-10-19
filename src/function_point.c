@@ -23,3 +23,12 @@ t_point	*create_point(void)
 	po->next = NULL;
 	return (po);
 }
+
+t_val	*create_val(void)
+{
+	t_val *val;
+
+	val = (t_val*)malloc(sizeof(t_val));
+	val->max_point = -1;
+	return (val);
+}
