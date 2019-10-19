@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   function_struct_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emeha <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/19 20:32:10 by emeha             #+#    #+#             */
-/*   Updated: 2019/10/19 20:32:14 by emeha            ###   ########.fr       */
+/*   Created: 2019/10/19 20:37:14 by emeha             #+#    #+#             */
+/*   Updated: 2019/10/19 20:37:15 by emeha            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_FDF_H
-# define FDF_FDF_H
+#include "../include/fdf.h"
 
-# include "../libft/libft.h"
-
-typedef	struct		s_point
+t_point	*create_point(void)
 {
-	int				x;
-	int				y;
-	int				z;
-	struct s_point	*next;
-}					t_point;
+	t_point *po;
 
-int					validation(t_point *po);
-void				error(char *er);
-t_point				*create_point(void);
-
-#endif
+	po = (t_point*)malloc(sizeof(t_point));
+	po->x = 0;
+	po->y = 0;
+	po->z = 0;
+	po->next = NULL;
+	return (po);
+}

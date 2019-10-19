@@ -5,7 +5,7 @@ set(CMAKE_C_STANDARD 99)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra")
 file(GLOB LIBFT libft/*.c libft/*.h)
-set(SOURCES src/fdf.c)
+set(SOURCES src/fdf.c src/validation.c src/function_point.c src/error.c)
 
 
 add_executable(fdf ${SOURCES} ${LIBFT})

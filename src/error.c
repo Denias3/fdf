@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emeha <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/19 20:32:10 by emeha             #+#    #+#             */
-/*   Updated: 2019/10/19 20:32:14 by emeha            ###   ########.fr       */
+/*   Created: 2019/10/19 20:47:38 by emeha             #+#    #+#             */
+/*   Updated: 2019/10/19 20:47:39 by emeha            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_FDF_H
-# define FDF_FDF_H
+#include "../include/fdf.h"
 
-# include "../libft/libft.h"
-
-typedef	struct		s_point
+void	error(char *er)
 {
-	int				x;
-	int				y;
-	int				z;
-	struct s_point	*next;
-}					t_point;
-
-int					validation(t_point *po);
-void				error(char *er);
-t_point				*create_point(void);
-
-#endif
+	ft_putstr(er);
+	exit(1);
+}

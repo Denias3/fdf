@@ -8,7 +8,7 @@ all: $(NAME)
 
 $(NAME): $(SRC)
 		@make -C libft
-		@gcc -Wall -Werror -Wextra -g $(SRC) $(INCLUDES) -o $(NAME)
+		gcc -Wall -Werror -Wextra -g $(SRC) $(INCLUDES) -o $(NAME)
 		@echo "-> compil fdf"
 
 clean:

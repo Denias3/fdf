@@ -15,6 +15,10 @@
 
 int main(void)
 {
-	printf("Hello world");
+	t_point *po;
+
+	po = create_point();
+	if (validation(po))
+		error("not falid map");
 	return (0);
 }
