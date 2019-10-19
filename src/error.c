@@ -14,6 +14,8 @@
 
 void	error(char *er)
 {
+	ft_putstr("error(");
 	ft_putstr(er);
+	ft_putchar(')');
 	exit(1);
 }

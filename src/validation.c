@@ -89,6 +89,8 @@ t_point	***validation(char *name_map)
 	po = create_point();
 	val = create_val(po);
 	fd = open(name_map, O_RDONLY);
+	if (fd == -1)
+		error("file not found");
 	while (get_next_line(fd, &line) > 0)
 	{
 		ft_putstr(line);
@@ -96,5 +98,7 @@ t_point	***validation(char *name_map)
 		check_line(line, val);
 		free(line);
 	}
+	if (po->x == -1)
+		error("no data on map");
 	return (map_creation(po, val));
 }

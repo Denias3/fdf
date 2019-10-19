@@ -6,7 +6,9 @@ SRC = fdf.c\
 		validation.c\
 		error.c\
 		function_point.c\
-		map_creation.c
+		map_creation.c\
+		free_split.c\
+		ft_atoi_er.c
 
 DIRSRC = src
 
