@@ -2,7 +2,11 @@ NAME = fdf
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = fdf.c
+SRC = fdf.c\
+		validation.c\
+		error.c\
+		function_point.c\
+		map_creation.c
 
 DIRSRC = src
 

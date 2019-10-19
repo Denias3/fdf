@@ -13,10 +13,12 @@
 #include "../include/fdf.h"
 #include <stdio.h>
 
-int main(void)
+int			main(int argc, char **argv)
 {
-	t_point ***map;
+	t_point	***map;
 
-	map = validation();
+	if (argc != 2)
+		return (0);
+	map = validation(argv[1]);
 	return (0);
 }

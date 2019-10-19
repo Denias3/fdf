@@ -68,7 +68,7 @@ void	check_line(char *line, t_point *po, t_val *val)
 	pars_point(line, po, val);
 }
 
-t_point	***validation()
+t_point	***validation(char *name_map)
 {
 	int		fd;
 	char	*line;
@@ -77,12 +77,12 @@ t_point	***validation()
 
 	po = create_point();
 	val = create_val(po);
-	fd = open("/Users/emeha/CLionProjects/fdf/maps/42.fdf", O_RDONLY);
+	fd = open(name_map, O_RDONLY);
 	while (get_next_line(fd, &line) > 0)
 	{
 		ft_putstr(line);
 		ft_putchar('\n');
 		check_line(line, po, val);
 	}
-	return (0);
+	return (map_creation(po, val));
 }

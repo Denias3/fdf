@@ -26,13 +26,14 @@ typedef	struct		s_point
 typedef	struct		s_val
 {
 	int				max_x;
+	int 			max_y;
 	t_point			*end_point;
-	int 			y;
 }					t_val;
 
 t_point				***validation();
 void				error(char *er);
 t_point				*create_point(void);
-t_val				*create_val(t_point *po);
+t_val				*create_val(void);
+t_point				***map_creation(t_point *po, t_val *val);
 
 #endif
