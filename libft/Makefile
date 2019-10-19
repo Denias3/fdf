@@ -10,14 +10,14 @@ FLAG = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(FILEC)
-	gcc $(FLAG) -c $(FILEC) -I $(LIB)
-	ar rc $(NAME) $(FILEO)
-	ranlib $(NAME)
+	@gcc $(FLAG) -c $(FILEC) -I $(LIB)
+	@ar rc $(NAME) $(FILEO)
+	@ranlib $(NAME)
 
 clean:
-	rm -rf $(FILEO)
+	@rm -rf $(FILEO)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
