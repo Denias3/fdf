@@ -98,6 +98,7 @@ t_point	***validation(char *name_map)
 		check_line(line, val);
 		free(line);
 	}
+	(val->max_x)++;
 	if (po->x == -1)
 		error("no data on map");
 	return (map_creation(po, val));
