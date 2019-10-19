@@ -30,7 +30,7 @@ typedef	struct		s_val
 	t_point			*end_point;
 }					t_val;
 
-t_point				***validation();
+t_point				***validation(char *name_map);
 void				error(char *er);
 t_point				*create_point(void);
 t_val				*create_val(t_point *po);
