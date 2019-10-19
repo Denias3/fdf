@@ -17,18 +17,21 @@ t_point	*create_point(void)
 	t_point *po;
 
 	po = (t_point*)malloc(sizeof(t_point));
-	po->x = 0;
+	po->x = -1;
 	po->y = 0;
-	po->z = 0;
+	po->z = -1;
 	po->next = NULL;
 	return (po);
 }
 
-t_val	*create_val(void)
+t_val	*create_val(t_point *po)
 {
 	t_val *val;
 
 	val = (t_val*)malloc(sizeof(t_val));
-	val->max_point = -1;
+	val->max_x = -1;
+	val->end_point = po;
+	val->y = -1;
+	val->x = -1;
 	return (val);
 }
