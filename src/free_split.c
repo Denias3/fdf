@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emeha <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/19 19:21:50 by emeha             #+#    #+#             */
-/*   Updated: 2019/10/19 19:21:52 by emeha            ###   ########.fr       */
+/*   Created: 2019/10/20 00:42:07 by emeha             #+#    #+#             */
+/*   Updated: 2019/10/20 00:42:08 by emeha            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-#include <stdio.h>
 
-int main()
+void free_split(char **split)
 {
-	t_point ***map;
+	int i;
 
-	map = validation();
-	return (0);
+	i = 0;
+	while (split[i] != NULL)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }

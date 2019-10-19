@@ -30,8 +30,7 @@ t_val	*create_val(t_point *po)
 
 	val = (t_val*)malloc(sizeof(t_val));
 	val->max_x = -1;
+	val->max_y = -1;
 	val->end_point = po;
-	val->y = -1;
-	val->x = -1;
 	return (val);
 }
