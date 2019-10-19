@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   function_struct_map.c                              :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emeha <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/19 20:37:14 by emeha             #+#    #+#             */
-/*   Updated: 2019/10/19 20:37:15 by emeha            ###   ########.fr       */
+/*   Created: 2019/10/20 00:42:07 by emeha             #+#    #+#             */
+/*   Updated: 2019/10/20 00:42:08 by emeha            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-t_point	*create_point(void)
+void free_split(char **split)
 {
-	t_point *po;
+	int i;
 
-	po = (t_point*)malloc(sizeof(t_point));
-	po->x = -1;
-	po->y = 0;
-	po->z = -1;
-	po->next = NULL;
-	return (po);
-}
-
-t_val	*create_val(t_point *po)
-{
-	t_val *val;
-
-	val = (t_val*)malloc(sizeof(t_val));
-	val->max_x = -1;
-	val->max_y = -1;
-	val->end_point = po;
-	return (val);
+	i = 0;
+	while (split[i] != NULL)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }

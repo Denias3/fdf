@@ -33,7 +33,9 @@ typedef	struct		s_val
 t_point				***validation();
 void				error(char *er);
 t_point				*create_point(void);
-t_val				*create_val(void);
+t_val				*create_val(t_point *po);
+int					ft_atoi_er(const char *str, int *er);
+void				free_split(char **split);
 t_point				***map_creation(t_point *po, t_val *val);
 
 #endif

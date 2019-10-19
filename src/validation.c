@@ -42,30 +42,41 @@ void	check_alph_line(char *line, t_val *val)
 		error("lines have different sizes");
 }
 
-void	pars_point(char *line, t_point *po, t_val *val)
+void	pars_point(char *line, t_val *val)
 {
 	char	**split;
 	t_point	*po_tmp;
 	int 	i;
+	int 	ch;
 
 	i = 0;
+	ch = 0;
 	po_tmp = val->end_point;
 	split = ft_strsplit(line, ' ');
+	(val->max_y)++;
 	while (po_tmp->next != NULL)
 		po_tmp = po_tmp->next;
 	while (split[i] != NULL)
 	{
-		po_tmp->next = create_point();
-		po_tmp->y =
+		if (split[i + 1] != NULL)
+			po_tmp->next = create_point();
+		po_tmp->y = val->max_y;
+		po_tmp->x = i;
+		po_tmp->z = ft_atoi_er(split[i], &ch);
+		if (ch)
+			error("too large/small number");
+		if (split[i + 1] != NULL)
+			po_tmp = po_tmp->next;
 		i++;
 	}
-
+	free_split(split);
+	val->end_point = po_tmp;
 }
 
-void	check_line(char *line, t_point *po, t_val *val)
+void	check_line(char *line, t_val *val)
 {
 	check_alph_line(line, val);
-	pars_point(line, po, val);
+	pars_point(line, val);
 }
 
 t_point	***validation(char *name_map)
@@ -82,7 +93,8 @@ t_point	***validation(char *name_map)
 	{
 		ft_putstr(line);
 		ft_putchar('\n');
-		check_line(line, po, val);
+		check_line(line, val);
+		free(line);
 	}
 	return (map_creation(po, val));
 }
