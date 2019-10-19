@@ -3,4 +3,9 @@ project(fdf C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(fdf main.c)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra")
+file(GLOB LIBFT libft/*.c libft/*.h)
+set(SOURCES fdf.c)
+
+
+add_executable(fdf ${SOURCES} ${LIBFT})
