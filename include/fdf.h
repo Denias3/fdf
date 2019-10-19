@@ -28,7 +28,7 @@ typedef	struct		s_val
 	int				max_point;
 }					t_val;
 
-int					validation(t_point *po);
+t_point				***validation();
 void				error(char *er);
 t_point				*create_point(void);
 t_val				*create_val(void);

@@ -15,10 +15,8 @@
 
 int main(void)
 {
-	t_point *po;
+	t_point ***map;
 
-	po = create_point();
-	if (validation(po))
-		error("not falid map");
+	map = validation();
 	return (0);
 }

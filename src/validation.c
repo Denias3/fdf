@@ -13,7 +13,7 @@
 #include "../include/fdf.h"
 #include <fcntl.h>
 
-int		check_alph_line(char *line, t_val *val)
+void	check_alph_line(char *line, t_val *val)
 {
 	int i;
 	int point;
@@ -21,11 +21,11 @@ int		check_alph_line(char *line, t_val *val)
 	i = 0;
 	point = 0;
 	if (line[i] == ' ')
-		return (1);
+		error("space at the beginning of the line");
 	while(line[i] != '\0')
 	{
 		if (line[i + 1] == '\0' && line[i] == ' ')
-			return (1);
+			error("space at the end of the line");
 		if ((line[i] >= '0' && line[i] <= '9') ||
 			(line[i] == ' ' && line[i - 1] != ' '))
 		{
@@ -34,13 +34,12 @@ int		check_alph_line(char *line, t_val *val)
 			i++;
 		}
 		else
-			return (1);
+			error("invalid characters");
 	}
 	if (val->max_point == -1)
 		val->max_point = point;
 	else if (val->max_point != point)
-		return (1);
-	return (0);
+		error("lines have different sizes");
 }
 
 void	pars_point(char *line, t_point *po)
@@ -48,29 +47,27 @@ void	pars_point(char *line, t_point *po)
 
 }
 
-int		check_line(char *line, t_point *po, t_val *val)
+void	check_line(char *line, t_point *po, t_val *val)
 {
-	if (check_alph_line(line, val))
-		return (1);
+	check_alph_line(line, val);
 	pars_point(line, po);
-	return (0);
 }
 
-int		validation(t_point *po)
+t_point	***validation()
 {
 	int		fd;
 	char	*line;
 	t_val	*val;
+	t_point *po;
 
+	po = create_point();
 	val = create_val();
-	po = NULL;
 	fd = open("/Users/emeha/CLionProjects/fdf/maps/42.fdf", O_RDONLY);
 	while (get_next_line(fd, &line) > 0)
 	{
 		ft_putstr(line);
 		ft_putchar('\n');
-		if (check_line(line, po, val))
-			error("not valid line in the map");
+		check_line(line, po, val);
 	}
 	return (0);
 }
