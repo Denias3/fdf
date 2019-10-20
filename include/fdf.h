@@ -31,6 +31,14 @@ typedef	struct		s_val
 	t_point			*end_point;
 }					t_val;
 
+typedef	struct		s_paint
+{
+	int				x;
+	int 			y;
+	void			*mlx_ptr;
+	void			*win_ptr;
+}					t_paint;
+
 t_point				***validation(char *name_map, t_val	**val);
 void				error(char *er);
 t_point				*create_point(void);
@@ -40,5 +48,6 @@ void				free_split(char **split);
 t_point				***map_creation(t_point *po, t_val *val);
 void                map_val_free(t_point ***map, t_val *val);
 int					init_window();
+t_paint				*create_paint();
 
 #endif

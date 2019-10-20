@@ -34,3 +34,15 @@ t_val	*create_val(t_point *po)
 	val->end_point = po;
 	return (val);
 }
+
+t_paint	*create_paint()
+{
+	t_paint *paint;
+
+	paint = (t_paint*)malloc(sizeof(t_paint));
+	paint->x = 250;
+	paint->y = 250;
+	paint->mlx_ptr = NULL;
+	paint->win_ptr = NULL;
+	return (paint);
+}
