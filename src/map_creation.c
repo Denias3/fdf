@@ -12,6 +12,11 @@
 
 #include "../include/fdf.h"
 
+//void        map_free(t_point ***map)
+//{
+//
+//}
+
 t_point		***map_creation(t_point *po, t_val *val)
 {
 	t_point	***map;
@@ -24,7 +29,7 @@ t_point		***map_creation(t_point *po, t_val *val)
 	{
 		x = 0;
 		map[y] = (t_point**)malloc(sizeof(t_point*) * (val->max_x + 2));
-		while (y == po->y)
+		while (po != NULL && y == po->y)
 		{
 			map[y][x] = po;
 			po = po->next;
