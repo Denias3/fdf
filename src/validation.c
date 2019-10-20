@@ -84,9 +84,9 @@ t_point		***validation(char *name_map, t_val **val)
 	char	*line;
 	t_point	*po;
 
+	fd = open(name_map, O_RDONLY);
 	po = create_point();
 	(*val) = create_val(po);
-	fd = open(name_map, O_RDONLY);
 	if (fd == -1)
 		error("file not found");
 	while (get_next_line(fd, &line) > 0)
