@@ -12,10 +12,26 @@
 
 #include "../include/fdf.h"
 
-//void        map_free(t_point ***map)
-//{
-//
-//}
+void        map_val_free(t_point ***map, t_val *val)
+{
+    int     x;
+    int     y;
+
+    y = 0;
+    while (map[y] != NULL)
+    {
+        x = 0;
+        while (map[y][x] != NULL)
+        {
+            free(map[y][x]);
+            x++;
+        }
+        free(map[y]);
+        y++;
+    }
+    free(map);
+    free(val);
+}
 
 t_point		***map_creation(t_point *po, t_val *val)
 {

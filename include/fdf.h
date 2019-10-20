@@ -30,12 +30,13 @@ typedef	struct		s_val
 	t_point			*end_point;
 }					t_val;
 
-t_point				***validation(char *name_map);
+t_point				***validation(char *name_map, t_val	**val);
 void				error(char *er);
 t_point				*create_point(void);
 t_val				*create_val(t_point *po);
 int					ft_atoi_er(const char *str, int *er);
 void				free_split(char **split);
 t_point				***map_creation(t_point *po, t_val *val);
+void                map_val_free(t_point ***map, t_val *val);
 
 #endif
