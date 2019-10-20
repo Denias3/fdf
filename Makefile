@@ -8,7 +8,8 @@ SRC = fdf.c\
 		function_point.c\
 		map_creation.c\
 		free_split.c\
-		ft_atoi_er.c
+		ft_atoi_er.c\
+		init_window.c
 
 DIRSRC = src
 

@@ -14,6 +14,7 @@
 # define FDF_FDF_H
 
 # include "../libft/libft.h"
+# include "../minilibx/mlx.h"
 
 typedef	struct		s_point
 {
@@ -38,5 +39,6 @@ int					ft_atoi_er(const char *str, int *er);
 void				free_split(char **split);
 t_point				***map_creation(t_point *po, t_val *val);
 void                map_val_free(t_point ***map, t_val *val);
+int					init_window();
 
 #endif
