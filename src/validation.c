@@ -54,19 +54,18 @@ void	pars_point(char *line, t_val *val)
 	po_tmp = val->end_point;
 	split = ft_strsplit(line, ' ');
 	(val->max_y)++;
-	while (po_tmp->next != NULL)
-		po_tmp = po_tmp->next;
 	while (split[i] != NULL)
 	{
-		if (split[i + 1] != NULL)
+		if (!(val->max_y == 0 && i == 0))
+		{
 			po_tmp->next = create_point();
+			po_tmp = po_tmp->next;
+		}
 		po_tmp->y = val->max_y;
 		po_tmp->x = i;
 		po_tmp->z = ft_atoi_er(split[i], &ch);
 		if (ch)
 			error("too large/small number");
-		if (split[i + 1] != NULL)
-			po_tmp = po_tmp->next;
 		i++;
 	}
 	free_split(split);
