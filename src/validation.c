@@ -13,16 +13,16 @@
 #include "../include/fdf.h"
 #include <fcntl.h>
 
-void        check_alph_line(char *line, t_val *val)
+void		check_alph_line(char *line, t_val *val)
 {
-	int     i;
-	int     point;
+	int		i;
+	int		point;
 
 	i = 0;
 	point = 0;
 	if (line[i] == ' ')
 		error("space at the beginning of the line");
-	while(line[i] != '\0')
+	while (line[i] != '\0')
 	{
 		if (line[i + 1] == '\0' && line[i] == ' ')
 			error("space at the end of the line");
@@ -42,12 +42,12 @@ void        check_alph_line(char *line, t_val *val)
 		error("lines have different sizes");
 }
 
-void        pars_point(char *line, t_val *val)
+void		pars_point(char *line, t_val *val)
 {
-	char    **split;
-	t_point *po_tmp;
-	int     i;
-	int     ch;
+	char	**split;
+	t_point	*po_tmp;
+	int		i;
+	int		ch;
 
 	i = 0;
 	ch = 0;
@@ -72,20 +72,20 @@ void        pars_point(char *line, t_val *val)
 	val->end_point = po_tmp;
 }
 
-void        check_line(char *line, t_val *val)
+void		check_line(char *line, t_val *val)
 {
 	check_alph_line(line, val);
 	pars_point(line, val);
 }
 
-t_point     ***validation(char *name_map, t_val	**val)
+t_point		***validation(char *name_map, t_val **val)
 {
-	int     fd;
-	char    *line;
-	t_point *po;
+	int		fd;
+	char	*line;
+	t_point	*po;
 
 	po = create_point();
-    (*val) = create_val(po);
+	(*val) = create_val(po);
 	fd = open(name_map, O_RDONLY);
 	if (fd == -1)
 		error("file not found");
