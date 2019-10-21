@@ -10,7 +10,8 @@ SRC = fdf.c\
 		free_split.c\
 		ft_atoi_er.c\
 		init_window.c\
-		size_designation.c
+		ft_abs.c\
+		starting_position.c
 
 DIRSRC = src
 

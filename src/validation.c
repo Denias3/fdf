@@ -91,8 +91,8 @@ t_point		***validation(char *name_map, t_val **val)
 		error("file not found");
 	while (get_next_line(fd, &line) > 0)
 	{
-		ft_putstr(line);
-		ft_putchar('\n');
+//		ft_putstr(line);
+//		ft_putchar('\n');
 		check_line(line, *val);
 		free(line);
 	}

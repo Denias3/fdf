@@ -28,6 +28,7 @@ typedef	struct		s_val
 {
 	int				max_x;
 	int 			max_y;
+	t_point			*start_point;
 	t_point			*end_point;
 }					t_val;
 
@@ -56,5 +57,7 @@ int					init_window(t_point	***map, t_val *val);
 t_paint				*create_paint();
 void				drawLine(t_point *one, t_point *two, t_paint *paint);
 void				size_designation(t_paint *pa, t_val *val);
+void				startinп_position(t_point *po, t_paint *paint);
+int					ft_abs(int num);
 
 #endif
