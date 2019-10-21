@@ -108,7 +108,7 @@ int init_window(t_point	***map, t_val *val)
 	printf("h_indent - %d\nu_indent - %d\nfield_width - %d\nfield_height - %d\nbetween- %d\n", paint->h_indent, paint->u_indent, paint->field_width, paint->field_height, paint->between);
 	printf("x - %d : y - %d\n", map[0][0]->x, map[0][0]->y);
 	print_to(val->start_point, paint);
-	//	mlx_key_hook(paint->win_ptr, deal_key, (void *)paint);
+//		mlx_key_hook(paint->win_ptr, deal_key, (void *)paint);
 //	drawLine(map[0][0], map[10][10], paint);
 	mlx_loop(paint->mlx_ptr);
 	return (0);

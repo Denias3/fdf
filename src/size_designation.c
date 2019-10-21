@@ -22,6 +22,11 @@ static void	find_indentation(t_paint *pa, t_val *val, int diraction)
 		pa->field_height = (pa->win_y / 100) * 80;
 		pa->u_indent = (pa->win_y - pa->field_height) / 2;
 		pa->between = pa->field_height / val->max_y;
+		if ((pa->between * val->max_x) > pa->win_x)
+		{
+			find_indentation(pa, val, 2);
+			return ;
+		}
 		pa->field_width = pa->between * val->max_x;
 		pa->h_indent = (pa->win_x - pa->field_width) / 2;
 	}
@@ -30,6 +35,11 @@ static void	find_indentation(t_paint *pa, t_val *val, int diraction)
 		pa->field_width = (pa->win_x / 100) * 80;
 		pa->h_indent = (pa->win_x - pa->field_width) / 2;
 		pa->between = pa->field_width / val->max_x;
+		if ((pa->between * val->max_y) > pa->win_y)
+		{
+			find_indentation(pa, val, 1);
+			return ;
+		}
 		pa->field_height = pa->between * val->max_y;
 		pa->u_indent = (pa->win_y - pa->field_height) / 2;
 	}
