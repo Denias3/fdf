@@ -44,5 +44,10 @@ t_paint	*create_paint()
 	paint->win_y = 500;
 	paint->mlx_ptr = NULL;
 	paint->win_ptr = NULL;
+	paint->h_indent = 0;
+	paint->u_indent = 0;
+	paint->field_width = 0;
+	paint->field_height = 0;
+	paint->between = 0;
 	return (paint);
 }

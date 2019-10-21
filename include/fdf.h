@@ -37,6 +37,11 @@ typedef	struct		s_paint
 	int 			win_y;
 	void			*mlx_ptr;
 	void			*win_ptr;
+	int				h_indent;
+	int				u_indent;
+	int				field_width;
+	int				field_height;
+	int				between;
 }					t_paint;
 
 t_point				***validation(char *name_map, t_val	**val);
@@ -47,8 +52,9 @@ int					ft_atoi_er(const char *str, int *er);
 void				free_split(char **split);
 t_point				***map_creation(t_point *po, t_val *val);
 void                map_val_free(t_point ***map, t_val *val);
-int					init_window(t_point	***map);
+int					init_window(t_point	***map, t_val *val);
 t_paint				*create_paint();
 void				drawLine(t_point *one, t_point *two, t_paint *paint);
+void				size_designation(t_paint *pa, t_val *val);
 
 #endif

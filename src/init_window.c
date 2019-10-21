@@ -89,13 +89,15 @@ int	deal_key(int key, void *param)
 	return (0);
 }
 
-int init_window(t_point	***map)
+int init_window(t_point	***map, t_val *val)
 {
 	t_paint	*paint;
 
 	paint = create_paint();
+	size_designation(paint, val);
 	paint->mlx_ptr = mlx_init();
 	paint->win_ptr = mlx_new_window(paint->mlx_ptr, paint->win_x, paint->win_y, "fdf");
+
 //	mlx_pixel_put(paint->mlx_ptr, paint->win_ptr, 250, 250, 0xff0505);
 //	mlx_key_hook(paint->win_ptr, deal_key, (void *)paint);
 	drawLine(map[0][0], map[10][10], paint);
