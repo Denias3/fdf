@@ -32,6 +32,7 @@ t_val	*create_val(t_point *po)
 	val->max_x = -1;
 	val->max_y = -1;
 	val->end_point = po;
+	val->start_point = po;
 	return (val);
 }
 
