@@ -87,6 +87,15 @@ int	deal_key(int key, void *param)
 	return (0);
 }
 
+void print_to(t_point *po, t_paint *paint)
+{
+	while (po != NULL)
+	{
+		mlx_pixel_put(paint->mlx_ptr, paint->win_ptr, po->x, po->y, 0xff0505);
+		po = po->next;
+	}
+}
+
 int init_window(t_point	***map, t_val *val)
 {
 	t_paint	*paint;
@@ -97,7 +106,8 @@ int init_window(t_point	***map, t_val *val)
 	paint->win_ptr = mlx_new_window(paint->mlx_ptr, paint->win_x, paint->win_y, "fdf");
 	starting_position(val->start_point, paint);
 	printf("h_indent - %d\nu_indent - %d\nfield_width - %d\nfield_height - %d\nbetween- %d\n", paint->h_indent, paint->u_indent, paint->field_width, paint->field_height, paint->between);
-	//	mlx_pixel_put(paint->mlx_ptr, paint->win_ptr, 250, 250, 0xff0505);
+	printf("x - %d : y - %d\n", map[0][0]->x, map[0][0]->y);
+	print_to(val->start_point, paint);
 	//	mlx_key_hook(paint->win_ptr, deal_key, (void *)paint);
 //	drawLine(map[0][0], map[10][10], paint);
 	mlx_loop(paint->mlx_ptr);
