@@ -14,7 +14,7 @@
 # define FDF_FDF_H
 
 # include "../libft/libft.h"
-# include "../minilibx/mlx.h"
+//# include "../minilibx/mlx.h"
 
 typedef	struct		s_point
 {
@@ -64,5 +64,6 @@ void				drawLine(t_point *one, t_point *two, t_paint *paint);
 void				size_designation(t_paint *pa, t_val *val);
 void				starting_position(t_point *po, t_paint *paint);
 int					ft_abs(int num);
+void				draw_map(t_point ***map, t_paint *val);
 
 #endif
