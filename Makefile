@@ -11,7 +11,8 @@ SRC = fdf.c\
 		ft_atoi_er.c\
 		init_window.c\
 		ft_abs.c\
-		starting_position.c
+		starting_position.c\
+		size_designation.c
 
 DIRSRC = src
 

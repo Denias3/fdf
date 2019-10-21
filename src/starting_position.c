@@ -12,19 +12,19 @@
 
 #include "../include/fdf.h"
 
-//void	startinп_position(t_point *po, t_paint *paint)
-//{
-//	while (po != NULL)
-//	{
-//		po->x += paint->h_indent;
-//		po->x += paint->u_indent;
-//		po->y += paint->h_indent;
-//		po->y += paint->u_indent;
-//		po->z += paint->h_indent;
-//		po->z += paint->u_indent;
-//		po->x *= paint->between;
-//		po->y *= paint->between;
-//		po->z *= paint->between;
-//		po = po->next;
-//	}
-//}
+void	starting_position(t_point *po, t_paint *paint)
+{
+	while (po != NULL)
+	{
+		po->x = paint->between * po->x;
+		po->y = paint->between * po->y;
+		po->z = paint->between * po->z;
+		po->x += paint->h_indent;
+		po->x += paint->u_indent;
+		po->y += paint->h_indent;
+		po->y += paint->u_indent;
+		po->z += paint->h_indent;
+		po->z += paint->u_indent;
+		po = po->next;
+	}
+}
