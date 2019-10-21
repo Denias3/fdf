@@ -45,6 +45,11 @@ typedef	struct		s_paint
 	int				between;
 }					t_paint;
 
+
+void		print_line(t_paint *paint, int x1, int x2, int y1, int y2);
+
+
+
 t_point				***validation(char *name_map, t_val	**val);
 void				error(char *er);
 t_point				*create_point(void);

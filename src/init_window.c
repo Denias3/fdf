@@ -41,52 +41,6 @@ void	drawLine(t_point *one, t_point *two, t_paint *paint)
 	}
 }
 
-int	deal_key(int key, void *param)
-{
-	t_paint *paint;
-
-	paint = (t_paint*)param;
-
-
-	int 	x1;
-	int 	x2;
-	int 	y1;
-	int 	y2;
-
-	if (key == 126)
-	{
-		x1 = 10;
-		x2 = 30;
-		y1 = 30;
-		y2 = 70;
-		const int deltaX = ft_abs(x2 - x1);
-		const int deltaY = ft_abs(y2 - y1);
-		const int signX = x1 < x2 ? 1 : -1;
-		const int signY = y1 < y2 ? 1 : -1;
-		//
-		int error = deltaX - deltaY;
-		//
-		mlx_pixel_put(paint->mlx_ptr, paint->win_ptr, x2, y2, 0xff0505);
-		while(x1 != x2 || y1 != y2)
-		{
-			mlx_pixel_put(paint->mlx_ptr, paint->win_ptr, x1, y1, 0xff0505);
-			const int error2 = error * 2;
-			//
-			if(error2 > -deltaY)
-			{
-				error -= deltaY;
-				x1 += signX;
-			}
-			if(error2 < deltaX)
-			{
-				error += deltaX;
-				y1 += signY;
-			}
-		}
-	}
-	return (0);
-}
-
 void print_to(t_point *po, t_paint *paint)
 {
 	while (po != NULL)
@@ -107,9 +61,11 @@ int init_window(t_point	***map, t_val *val)
 	starting_position(val->start_point, paint);
 	printf("h_indent - %d\nu_indent - %d\nfield_width - %d\nfield_height - %d\nbetween- %d\n", paint->h_indent, paint->u_indent, paint->field_width, paint->field_height, paint->between);
 	printf("x - %d : y - %d\n", map[0][0]->x, map[0][0]->y);
+	print_line(paint, paint->h_indent, 0, paint->h_indent, paint->win_y);
+	print_line(paint, paint->win_x - paint->h_indent, 0, paint->win_x - paint->h_indent, paint->win_y);
+	print_line(paint, 0, paint->u_indent, paint->win_x, paint->u_indent);
+	print_line(paint, 0, paint->win_y - paint->u_indent, paint->win_x, paint->win_y - paint->u_indent);
 	print_to(val->start_point, paint);
-//		mlx_key_hook(paint->win_ptr, deal_key, (void *)paint);
-//	drawLine(map[0][0], map[10][10], paint);
 	mlx_loop(paint->mlx_ptr);
 	return (0);
 }

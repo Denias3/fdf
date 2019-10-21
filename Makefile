@@ -12,7 +12,8 @@ SRC = fdf.c\
 		init_window.c\
 		ft_abs.c\
 		starting_position.c\
-		size_designation.c
+		size_designation.c\
+		debag.c
 
 DIRSRC = src
 
