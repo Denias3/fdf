@@ -56,19 +56,20 @@ int init_window(t_point	***map, t_val *val)
 {
 	t_paint	*paint;
 
-	paint = create_paint();
-	size_designation(paint, val, 50);
+	paint = create_paint(val, map);
+	size_designation(paint, val, 20);
 	paint->mlx_ptr = mlx_init();
 	paint->win_ptr = mlx_new_window(paint->mlx_ptr, paint->win_x, paint->win_y, "fdf");
 	starting_position(val->start_point, paint);
 	printf("h_indent - %d\nu_indent - %d\nfield_width - %d\nfield_height - %d\nbetween- %d\n", paint->h_indent, paint->u_indent, paint->field_width, paint->field_height, paint->between);
 	printf("x - %d : y - %d\n", map[0][0]->x, map[0][0]->y);
-	print_line(paint, paint->h_indent, 0, paint->h_indent, paint->win_y, 0x262626);
-	print_line(paint, paint->win_x - paint->h_indent, 0, paint->win_x - paint->h_indent, paint->win_y, 0x262626);
-	print_line(paint, 0, paint->u_indent, paint->win_x, paint->u_indent, 0x262626);
-	print_line(paint, 0, paint->win_y - paint->u_indent, paint->win_x, paint->win_y - paint->u_indent, 0x262626);
+	print_line(paint, paint->h_indent, 0, paint->h_indent, paint->win_y);
+	print_line(paint, paint->win_x - paint->h_indent, 0, paint->win_x - paint->h_indent, paint->win_y);
+	print_line(paint, 0, paint->u_indent, paint->win_x, paint->u_indent);
+	print_line(paint, 0, paint->win_y - paint->u_indent, paint->win_x, paint->win_y - paint->u_indent);
 //	print_to(val->start_point, paint);
 	isometric(map, paint);
+	mlx_key_hook(paint->win_ptr, key_press, (void *)paint);
 	draw_map(map, paint);
 	mlx_loop(paint->mlx_ptr);
 	return (0);

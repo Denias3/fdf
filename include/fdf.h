@@ -37,6 +37,8 @@ typedef	struct		s_val
 
 typedef	struct		s_paint
 {
+	t_val			*val;
+	t_point			***map;
 	int 			win_x;
 	int 			win_y;
 	void			*mlx_ptr;
@@ -50,9 +52,7 @@ typedef	struct		s_paint
 	int 			*mid_y;
 }					t_paint;
 
-
 void		print_line(t_paint *paint, int x1, int x2, int y1, int y2, int color);
-
 
 
 t_point				***validation(char *name_map, t_val	**val);
@@ -64,7 +64,7 @@ void				free_split(char **split);
 t_point				***map_creation(t_point *po, t_val *val);
 void                map_val_free(t_point ***map, t_val *val);
 int					init_window(t_point	***map, t_val *val);
-t_paint				*create_paint();
+t_paint				*create_paint(t_val *val, t_point ***map);
 void				draw_line(t_point *one, t_point *two, t_paint *paint);
 void				size_designation(t_paint *pa, t_val *val, int percent);
 void				starting_position(t_point *po, t_paint *paint);
@@ -73,5 +73,9 @@ void				draw_map(t_point ***map, t_paint *paint);
 int					check_color(char *s);
 void 				pars_color(t_point *po, char *s);
 void				isometric(t_point ***map, t_paint *pa);
+int  				key_press(int keycode, void *param);
+void				distance(t_paint *paint);
+void				approach(t_paint *paint);
+void				shift_map(t_point *po, int sh, int bet);
 
 #endif
