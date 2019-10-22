@@ -67,7 +67,8 @@ int init_window(t_point	***map, t_val *val)
 	print_line(paint, paint->win_x - paint->h_indent, 0, paint->win_x - paint->h_indent, paint->win_y);
 	print_line(paint, 0, paint->u_indent, paint->win_x, paint->u_indent);
 	print_line(paint, 0, paint->win_y - paint->u_indent, paint->win_x, paint->win_y - paint->u_indent);
-	print_to(val->start_point, paint);
+//	print_to(val->start_point, paint);
+	isometric(map);
 	draw_map(map, paint);
 	mlx_loop(paint->mlx_ptr);
 	return (0);

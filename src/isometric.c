@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   isometric.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emeha <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: fschille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 00:42:40 by emeha             #+#    #+#             */
-/*   Updated: 2019/10/22 00:42:41 by emeha            ###   ########.fr       */
+/*   Created: 2019/10/22 04:43:48 by fschille          #+#    #+#             */
+/*   Updated: 2019/10/22 04:43:50 by fschille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void	draw_map(t_point ***map, t_paint *paint)
+static void iso(t_point *point)
+{
+	int previous_x;
+	int previous_y;
+
+	previous_x = point->x;
+	previous_y = point->y;
+	point->x = (previous_x - previous_y) * cos(0.523599);
+	point->y = -point->z + (previous_x + previous_y) * sin(0.523599);
+}
+
+void		map_pass(t_point ***map, void f(t_point*))
 {
 	int 	x;
 	int 	y;
@@ -23,12 +34,14 @@ void	draw_map(t_point ***map, t_paint *paint)
 		x = 0;
 		while (map[y][x] != NULL)
 		{
-			if (map[y][x + 1] && map[y][x])
-				draw_line(map[y][x],map[y][x + 1], paint);
-			if (map[y + 1] && map[y + 1][x] && map[y][x])
-				draw_line(map[y][x], map[y + 1][x], paint);
+			f(map[y][x]);
 			x++;
 		}
 		y++;
 	}
+}
+
+void		isometric(t_point ***map)
+{
+	map_pass(map, iso);
 }

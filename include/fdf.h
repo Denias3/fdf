@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 #include <stdio.h> /* Удалить (printf();) */
+#include <math.h>
 
 typedef	struct		s_point
 {
@@ -69,5 +70,6 @@ int					ft_abs(int num);
 void				draw_map(t_point ***map, t_paint *paint);
 int					check_color(char *s);
 void 				pars_color(t_point *po, char *s);
+void				isometric(t_point ***map);
 
 #endif

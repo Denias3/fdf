@@ -15,6 +15,7 @@ SRC = fdf.c\
 		size_designation.c\
 		draw_map.c\
 		pars_color.c\
+		isometric.c\
 		\
 		debag.c
 
