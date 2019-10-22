@@ -21,6 +21,7 @@ typedef	struct		s_point
 	int				x;
 	int				y;
 	int				z;
+	char			*color;
 	struct s_point	*next;
 }					t_point;
 
@@ -65,5 +66,7 @@ void				size_designation(t_paint *pa, t_val *val);
 void				starting_position(t_point *po, t_paint *paint);
 int					ft_abs(int num);
 void				draw_map(t_point ***map, t_paint *val);
+int					check_color(char *s);
+void 				pars_color(t_point *po, char *s);
 
 #endif

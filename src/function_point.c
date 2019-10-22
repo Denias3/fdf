@@ -20,6 +20,7 @@ t_point	*create_point(void)
 	po->x = -1;
 	po->y = 0;
 	po->z = -1;
+	po->color = NULL;
 	po->next = NULL;
 	return (po);
 }
@@ -41,7 +42,7 @@ t_paint	*create_paint()
 	t_paint *paint;
 
 	paint = (t_paint*)malloc(sizeof(t_paint));
-	paint->win_x = 1000;
+	paint->win_x = 300;
 	paint->win_y = 1000;
 	paint->mlx_ptr = NULL;
 	paint->win_ptr = NULL;

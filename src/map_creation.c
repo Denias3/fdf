@@ -23,6 +23,8 @@ void		map_val_free(t_point ***map, t_val *val)
 		x = 0;
 		while (map[y][x] != NULL)
 		{
+			if (map[y][x]->color != NULL)
+				free(map[y][x]->color);
 			free(map[y][x]);
 			x++;
 		}

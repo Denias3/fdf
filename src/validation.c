@@ -13,6 +13,43 @@
 #include "../include/fdf.h"
 #include <fcntl.h>
 
+int 		valid_color(char *line, int *i)
+{
+	int	size;
+
+	size = 9;
+	while (line[*i] != '\0' && size != 0)
+	{
+		if (size == 9)
+		{
+			if (line[*i] != ',')
+				return (1);
+		}
+		else if (size == 8)
+		{
+			if (line[*i] != '0')
+				return (1);
+		}
+		else if (size == 7)
+		{
+			if (line[*i] != 'x')
+				return (1);
+		}
+		else if (size < 7 && size > -1)
+		{
+			if (!((line[*i] >= 'A' && line[*i] <= 'F') ||
+					(line[*i] >= 'a' && line[*i] <= 'f') ||
+					(line[*i] >= '0' && line[*i] <= '9')))
+				return (1);
+		}
+		else
+			return (1);
+		size--;
+		(*i)++;
+	}
+	return (0);
+}
+
 void		check_alph_line(char *line, t_val *val)
 {
 	int		i;
@@ -20,12 +57,20 @@ void		check_alph_line(char *line, t_val *val)
 
 	i = 0;
 	point = 0;
-	if (line[i] == ' ')
-		error("space at the beginning of the line");
+	if (line[i] == ' ' || line[i] == ',')
+		error("space or comma at the beginning of a line");
 	while (line[i] != '\0')
 	{
 		if (line[i + 1] == '\0' && line[i] == ' ')
 			error("space at the end of the line");
+		if (line[i] == ',' && line[i - 1] != ' ')
+		{
+			if (valid_color(line, &i))
+				error("not formatting color correctly");
+			if (line[i] != ' ')
+				error("after color there should be problems");
+			continue ;
+		}
 		if ((line[i] >= '0' && line[i] <= '9') ||
 			(line[i] == ' ' && line[i - 1] != ' '))
 		{
@@ -34,7 +79,7 @@ void		check_alph_line(char *line, t_val *val)
 			i++;
 		}
 		else
-			error("invalid characters");
+			error("invalid characters or double space");
 	}
 	if (val->max_x == -1)
 		val->max_x = point;
@@ -61,6 +106,8 @@ void		pars_point(char *line, t_val *val)
 			po_tmp->next = create_point();
 			po_tmp = po_tmp->next;
 		}
+		if (check_color(split[i]))
+			pars_color(po_tmp, split[i]);
 		po_tmp->y = val->max_y;
 		po_tmp->x = i;
 		po_tmp->z = ft_atoi_er(split[i], &ch);
