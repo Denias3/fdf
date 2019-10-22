@@ -20,6 +20,7 @@ int			main(int argc, char **argv)
 	if (argc != 2)
 		error("indicate the path to the map");
 	map = validation(argv[1], &val);
+	val->static_point = copy_points(val->start_point);
 	init_window(map, val);
 	map_val_free(map, val);
 	return (0);

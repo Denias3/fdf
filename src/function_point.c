@@ -25,6 +25,28 @@ t_point	*create_point(void)
 	return (po);
 }
 
+t_point	*copy_points(t_point *po)
+{
+	t_point *tmp;
+	t_point *start;
+
+	start = create_point();
+	tmp = start;
+	while (po->next != NULL)
+	{
+		tmp->y = po->y;
+		tmp->x = po->x;
+		tmp->z = po->z;
+		tmp->next = create_point();
+		po = po->next;
+		tmp = tmp->next;
+	}
+	tmp->y = po->y;
+	tmp->x = po->x;
+	tmp->z = po->z;
+	return (start);
+}
+
 t_val	*create_val(t_point *po)
 {
 	t_val *val;
@@ -34,6 +56,7 @@ t_val	*create_val(t_point *po)
 	val->max_y = -1;
 	val->end_point = po;
 	val->start_point = po;
+	val->static_point = NULL;
 	return (val);
 }
 

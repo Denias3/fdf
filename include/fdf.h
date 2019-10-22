@@ -31,6 +31,7 @@ typedef	struct		s_val
 {
 	int				max_x;
 	int 			max_y;
+	t_point			*static_point;
 	t_point			*start_point;
 	t_point			*end_point;
 }					t_val;
@@ -74,8 +75,10 @@ int					check_color(char *s);
 void 				pars_color(t_point *po, char *s);
 void				isometric(t_point ***map, t_paint *pa);
 int  				key_press(int keycode, void *param);
+void				make_accurate(t_paint *pa, t_val *val);
 void				distance(t_paint *paint);
 void				approach(t_paint *paint);
 void				shift_map(t_point *po, int sh, int bet);
+t_point				*copy_points(t_point *po);
 
 #endif
