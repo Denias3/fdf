@@ -21,6 +21,8 @@ static void iso(t_point *point)
 	previous_y = point->y;
 	point->x = (previous_x - previous_y) * cos(0.523599);
 	point->y = -point->z + (previous_x + previous_y) * sin(0.523599);
+//	point->x += 500;
+//	point->y += 200;
 }
 
 void		map_pass(t_point ***map, void f(t_point*))
