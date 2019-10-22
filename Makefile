@@ -16,6 +16,9 @@ SRC = fdf.c\
 		draw_map.c\
 		pars_color.c\
 		isometric.c\
+		key_press.c\
+		distance_approach.c\
+		shift.c\
 		\
 		debag.c
 

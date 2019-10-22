@@ -6,7 +6,7 @@
 /*   By: emeha <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:37:14 by emeha             #+#    #+#             */
-/*   Updated: 2019/10/19 20:37:15 by emeha            ###   ########.fr       */
+/*   Updated: 2019/10/22 05:03:32 by emeha            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@ t_val	*create_val(t_point *po)
 	return (val);
 }
 
-t_paint	*create_paint()
+t_paint	*create_paint(t_val *val, t_point ***map)
 {
 	t_paint *paint;
 
 	paint = (t_paint*)malloc(sizeof(t_paint));
-	paint->win_x = 1000;
+	paint->map = map;
+	paint->val = val;
+	paint->win_x = 2000;
 	paint->win_y = 1000;
 	paint->mlx_ptr = NULL;
 	paint->win_ptr = NULL;
