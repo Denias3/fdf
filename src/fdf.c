@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-#include <stdio.h>
 
 int			main(int argc, char **argv)
 {
@@ -21,7 +20,7 @@ int			main(int argc, char **argv)
 	if (argc != 2)
 		error("indicate the path to the map");
 	map = validation(argv[1], &val);
-//	init_window(map, val);
+	init_window(map, val);
 	map_val_free(map, val);
 	return (0);
 }

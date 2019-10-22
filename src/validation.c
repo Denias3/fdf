@@ -54,28 +54,33 @@ void		check_alph_line(char *line, t_val *val)
 {
 	int		i;
 	int		point;
+	int 	ch;
 
+	ch = 0;
 	i = 0;
 	point = 0;
-	if (line[i] == ' ' || line[i] == ',')
-		error("space or comma at the beginning of a line");
+	if (line[i] == ',')
+		error("comma at the beginning of a line");
 	while (line[i] != '\0')
 	{
-		if (line[i + 1] == '\0' && line[i] == ' ')
-			error("space at the end of the line");
 		if (line[i] == ',' && line[i - 1] != ' ')
 		{
 			if (valid_color(line, &i))
 				error("not formatting color correctly");
-			if (line[i] != ' ')
-				error("after color there should be problems");
+			if (!(line[i] == ' ' || line[i] == '\0'))
+				error("after color there should be space");
 			continue ;
 		}
 		if ((line[i] >= '0' && line[i] <= '9') ||
-			(line[i] == ' ' && line[i - 1] != ' '))
+			(line[i] == ' '))
 		{
-			if (line[i] == ' ')
+			if (ch == 0 &&
+				(line[i] >= '0' && line[i] <= '9'))
 				point++;
+			if (line[i] == ' ')
+				ch = 0;
+			else
+				ch = 1;
 			i++;
 		}
 		else
@@ -143,6 +148,7 @@ t_point		***validation(char *name_map, t_val **val)
 		check_line(line, *val);
 		free(line);
 	}
+	(*val)->max_x--;
 	if (po->x == -1)
 		error("no data on map");
 	return (map_creation(po, *val));
