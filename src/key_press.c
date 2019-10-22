@@ -17,7 +17,6 @@ int  key_press(int keycode, void *param)
 	t_paint *paint;
 
 	paint = param;
-	mlx_clear_window(paint->mlx_ptr, paint->win_ptr);
 	if (keycode == 126)
 		shift_map(paint->val->start_point, 1, paint->between);
 	else if (keycode == 124)
@@ -38,6 +37,11 @@ int  key_press(int keycode, void *param)
 		starting_position(paint->val->start_point, paint);
 		isometric(paint->map, paint);
 	}
+	else if (keycode == 0)
+		twist_map_x(paint->val->start_point, 0);
+	else if (keycode == 2)
+		twist_map_x(paint->val->start_point, 1);
+	mlx_clear_window(paint->mlx_ptr, paint->win_ptr);
 	draw_map(paint->map, paint);
 	return (0);
 }

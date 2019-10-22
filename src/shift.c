@@ -27,3 +27,21 @@ void	shift_map(t_point *po, int sh, int bet)
 		po = po->next;
 	}
 }
+
+void	twist_map_x(t_point *po, int sh)
+{
+	while (po != NULL)
+	{
+		if (sh == 0)
+		{
+			po->x = po->x * cos(0.1) + po->y * sin(0.1);
+			po->y = po->x * sin(0.1) + po->y * cos(0.1);
+		}
+		else if (sh == 1)
+		{
+			po->x = po->x * cos(-0.1) + po->y * sin(-0.1);
+			po->y = po->x * sin(-0.1) + po->y * cos(-0.1);
+		}
+		po = po->next;
+	}
+}

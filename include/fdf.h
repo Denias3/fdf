@@ -79,6 +79,7 @@ void				make_accurate(t_paint *pa, t_val *val);
 void				distance(t_paint *paint);
 void				approach(t_paint *paint);
 void				shift_map(t_point *po, int sh, int bet);
+void				twist_map_x(t_point *po, int sh);
 t_point				*copy_points(t_point *po);
 
 #endif
