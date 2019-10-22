@@ -15,6 +15,14 @@
 #define MAX(max_x, max_y) (max_x >= max_y ? max_x : max_y)
 #define DD(max, max_x) (max == max_x ? 2 : 1) /* determination of direction */
 
+static void	make_accurate(t_paint *pa, t_val *val)
+{
+	pa->field_width = pa->between * val->max_x;
+	pa->field_height = pa->between * val->max_y;
+	pa->h_indent = (pa->win_x - pa->field_width) / 2;
+	pa->u_indent = (pa->win_y - pa->field_height) / 2;
+}
+
 static void	find_indentation(t_paint *pa, t_val *val, int diraction)
 {
 	if (diraction == 1)
@@ -29,20 +37,18 @@ static void	find_indentation(t_paint *pa, t_val *val, int diraction)
 		}
 		pa->field_width = pa->between * val->max_x;
 		pa->h_indent = (pa->win_x - pa->field_width) / 2;
+		return ;
 	}
-	else if (diraction == 2)
+	pa->field_width = (pa->win_x / 100) * 80;
+	pa->h_indent = (pa->win_x - pa->field_width) / 2;
+	pa->between = pa->field_width / val->max_x;
+	if ((pa->between * val->max_y) > pa->win_y)
 	{
-		pa->field_width = (pa->win_x / 100) * 80;
-		pa->h_indent = (pa->win_x - pa->field_width) / 2;
-		pa->between = pa->field_width / val->max_x;
-		if ((pa->between * val->max_y) > pa->win_y)
-		{
-			find_indentation(pa, val, 1);
-			return ;
-		}
-		pa->field_height = pa->between * val->max_y;
-		pa->u_indent = (pa->win_y - pa->field_height) / 2;
+		find_indentation(pa, val, 1);
+		return ;
 	}
+	pa->field_height = pa->between * val->max_y;
+	pa->u_indent = (pa->win_y - pa->field_height) / 2;
 }
 
 void		size_designation(t_paint *pa, t_val *val)
@@ -53,4 +59,5 @@ void		size_designation(t_paint *pa, t_val *val)
 	max = MAX(val->max_x, val->max_y);
 	direction = DD(max, val->max_x);
 	find_indentation(pa, val, direction);
+	make_accurate(pa, val);
 }

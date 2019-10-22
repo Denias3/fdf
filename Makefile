@@ -13,8 +13,11 @@ SRC = fdf.c\
 		ft_abs.c\
 		starting_position.c\
 		size_designation.c\
-		debag.c\
-		pars_color.c
+		draw_map.c\
+		pars_color.c\
+		\
+		debag.c
+
 
 DIRSRC = src
 
