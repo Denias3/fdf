@@ -41,8 +41,8 @@ t_paint	*create_paint()
 	t_paint *paint;
 
 	paint = (t_paint*)malloc(sizeof(t_paint));
-	paint->win_x = 1000;
-	paint->win_y = 1000;
+	paint->win_x = 500;
+	paint->win_y = 500;
 	paint->mlx_ptr = NULL;
 	paint->win_ptr = NULL;
 	paint->h_indent = 0;

@@ -11,32 +11,34 @@
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-#include <stdio.h>
 
-void	drawLine(t_point *one, t_point *two, t_paint *paint)
+void		draw_line(t_point *one, t_point *two, t_paint *paint)
 {
-	const int deltaX = ft_abs(two->x - one->x);
-	const int deltaY = ft_abs(two->y - one->y);
-	const int signX = one->x < two->x ? 1 : -1;
-	const int signY = one->y < two->y ? 1 : -1;
-	int error = deltaX - deltaY;
-	int error2;
-	printf("one x(%d) y(%d)\ntwo x(%d) y(%d)\n\n",one->x, one->y, two->x, two->y);
+	int 	var[10];
 
-	mlx_pixel_put(paint->mlx_ptr, paint->win_ptr, two->x, two->y, 0xff0505);
-	while(one->x != two->x || one->y != two->y)
+	var[0] = one->x;;
+	var[1] = one->y;
+	var[2] = two->x;
+	var[3] = two->y;
+	var[4] = ft_abs(var[2] - var[0]);
+	var[5] = ft_abs(var[3] - var[1]);
+	var[6] = var[0] < var[2] ? 1 : -1;
+	var[7] = var[1] < var[3] ? 1 : -1;
+	var[8] = var[4] - var[5];
+	mlx_pixel_put(paint->mlx_ptr, paint->win_ptr, var[2], var[3], 0xff0505);
+	while(var[0] != var[2] || var[1] != var[3])
 	{
-		mlx_pixel_put(paint->mlx_ptr, paint->win_ptr, one->x, one->y, 0xff0505);
-		error2 = error * 2;
-		if(error2 > -deltaY)
+		mlx_pixel_put(paint->mlx_ptr, paint->win_ptr, var[0], var[1], 0xff0505);
+		var[9] = var[8] * 2;
+		if(var[9] > -var[5])
 		{
-			error -= deltaY;
-			one->x += signX;
+			var[8] -= var[5];
+			var[0] += var[6];
 		}
-		if(error2 < deltaX)
+		if(var[9] < var[4])
 		{
-			error += deltaX;
-			one->y += signY;
+			var[8] += var[4];
+			var[1] += var[7];
 		}
 	}
 }
@@ -66,6 +68,7 @@ int init_window(t_point	***map, t_val *val)
 	print_line(paint, 0, paint->u_indent, paint->win_x, paint->u_indent);
 	print_line(paint, 0, paint->win_y - paint->u_indent, paint->win_x, paint->win_y - paint->u_indent);
 	print_to(val->start_point, paint);
+	draw_map(map, paint);
 	mlx_loop(paint->mlx_ptr);
 	return (0);
 }

@@ -14,7 +14,8 @@
 # define FDF_FDF_H
 
 # include "../libft/libft.h"
-//# include "../minilibx/mlx.h"
+# include "../minilibx/mlx.h"
+#include <stdio.h> /* Удалить (printf();) */
 
 typedef	struct		s_point
 {
@@ -60,10 +61,10 @@ t_point				***map_creation(t_point *po, t_val *val);
 void                map_val_free(t_point ***map, t_val *val);
 int					init_window(t_point	***map, t_val *val);
 t_paint				*create_paint();
-void				drawLine(t_point *one, t_point *two, t_paint *paint);
+void				draw_line(t_point *one, t_point *two, t_paint *paint);
 void				size_designation(t_paint *pa, t_val *val);
 void				starting_position(t_point *po, t_paint *paint);
 int					ft_abs(int num);
-void				draw_map(t_point ***map, t_paint *val);
+void				draw_map(t_point ***map, t_paint *paint);
 
 #endif
