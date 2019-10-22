@@ -46,10 +46,12 @@ typedef	struct		s_paint
 	int				field_width;
 	int				field_height;
 	int				between;
+	int 			*mid_x;
+	int 			*mid_y;
 }					t_paint;
 
 
-void		print_line(t_paint *paint, int x1, int x2, int y1, int y2);
+void		print_line(t_paint *paint, int x1, int x2, int y1, int y2, int color);
 
 
 
@@ -70,6 +72,6 @@ int					ft_abs(int num);
 void				draw_map(t_point ***map, t_paint *paint);
 int					check_color(char *s);
 void 				pars_color(t_point *po, char *s);
-void				isometric(t_point ***map);
+void				isometric(t_point ***map, t_paint *pa);
 
 #endif

@@ -51,5 +51,13 @@ t_paint	*create_paint()
 	paint->field_width = 0;
 	paint->field_height = 0;
 	paint->between = 0;
+	paint->mid_x = (int*)malloc(sizeof(int) * 3);
+	paint->mid_x[0] = 0;
+	paint->mid_x[1] = 99999999;
+	paint->mid_x[2] = 0;
+	paint->mid_y = (int*)malloc(sizeof(int) * 3);
+	paint->mid_y[0] = 0;
+	paint->mid_y[1] = 99999999;
+	paint->mid_x[2] = 0;
 	return (paint);
 }
