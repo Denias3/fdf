@@ -49,8 +49,8 @@ typedef	struct		s_paint
 	int				field_width;
 	int				field_height;
 	int				between;
-	int 			*mid_x;
-	int 			*mid_y;
+	int 			*size;
+	int				*mid;
 }					t_paint;
 
 void		print_line(t_paint *paint, int x1, int x2, int y1, int y2, int color);
@@ -81,5 +81,7 @@ void				approach(t_paint *paint);
 void				shift_map(t_point *po, int sh, int bet);
 void				twist_map_x(t_point *po, int sh);
 t_point				*copy_points(t_point *po);
+void				map_pass(t_point ***map, void f(t_point*, t_paint*), t_paint *pa);
+void				search_map_center(t_point ***map, t_paint *pa);
 
 #endif

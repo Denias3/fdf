@@ -34,14 +34,60 @@ void	twist_map_x(t_point *po, int sh)
 	{
 		if (sh == 0)
 		{
-			po->x = po->x * cos(0.1) + po->y * sin(0.1);
-			po->y = po->x * sin(0.1) + po->y * cos(0.1);
+			po->y = po->y * cos(0.174533) + po->z * sin(0.174533);
+			po->z = -po->y * sin(0.174533) + po->z * cos(0.174533);
 		}
 		else if (sh == 1)
 		{
-			po->x = po->x * cos(-0.1) + po->y * sin(-0.1);
-			po->y = po->x * sin(-0.1) + po->y * cos(-0.1);
+			po->y = po->y * cos(-0.174533) + po->z * sin(-0.174533);
+			po->z = -po->y * sin(-0.174533) + po->z * cos(-0.174533);
 		}
 		po = po->next;
 	}
 }
+//
+//void    rotate_x(int znak, t_fdf *t)
+//{
+//	int     y;
+//	int     x;
+//	double  n;
+//	double  y0;
+//	​
+//	n = (znak == 0) ? 0.174533 : -0.174533;
+//	y = 0;
+//	while (y < t->height)
+//	{
+//		x = 0;
+//		while (x < t->width)
+//		{
+//			y0 = t->p[y][x].y - t->height / 2;
+//			t->p[y][x].y = t->height / 2 + y0 * cos(n) + t->p[y][x].z * sin(n);
+//			t->p[y][x].z = -y0 * sin(n) + t->p[y][x].z * cos(n);
+//			x++;
+//		}
+//		y++;
+//	}
+//}
+//​
+//void    rotate_y(int znak, t_fdf *t)
+//{
+//	int     y;
+//	int     x;
+//	double  n;
+//	double  x0;
+//	​
+//	n = (znak == 0) ? 0.174533 : -0.174533;
+//	y = 0;
+//	while (y < t->height)
+//	{
+//		x = 0;
+//		while (x < t->width)
+//		{
+//			x0 = t->p[y][x].x - t->width / 2;
+//			t->p[y][x].x = t->width / 2 + x0 * cos(n) + t->p[y][x].z * sin(n);
+//			t->p[y][x].z = -x0 * sin(n) + t->p[y][x].z * cos(n);
+//			x++;
+//		}
+//		y++;
+//	}
+//}

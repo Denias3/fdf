@@ -21,16 +21,16 @@ static void iso(t_point *point, t_paint *pa)
 	previous_y = point->y;
 	point->x = (previous_x - previous_y) * cos(0.523599);
 	point->y = -point->z + (previous_x + previous_y) * sin(0.523599);
-	point->x > pa->mid_x[0] ? pa->mid_x[0] = point->x : pa->mid_x[0];
-	point->x < pa->mid_x[1] ? pa->mid_x[1] = point->x : pa->mid_x[1];
-	point->y > pa->mid_y[0] ? pa->mid_y[0] = point->y : pa->mid_y[0];
-	point->y < pa->mid_y[1] ? pa->mid_y[1] = point->y : pa->mid_y[1];
+	point->x > pa->size[0] ? pa->size[0] = point->x : pa->size[0];
+	point->x < pa->size[1] ? pa->size[1] = point->x : pa->size[1];
+	point->y > pa->size[2] ? pa->size[2] = point->y : pa->size[2];
+	point->y < pa->size[3] ? pa->size[3] = point->y : pa->size[3];
 }
 
 static void plus(t_point *point, t_paint *pa)
 {
-	point->x += pa->mid_x[2];
-	point->y += pa->mid_y[2];
+	point->x += pa->mid[0];
+	point->y += pa->mid[1];
 }
 
 void		map_pass(t_point ***map, void f(t_point*, t_paint*), t_paint *pa)
@@ -54,19 +54,12 @@ void		map_pass(t_point ***map, void f(t_point*, t_paint*), t_paint *pa)
 void		isometric(t_point ***map, t_paint *pa)
 {
 	map_pass(map, iso, pa);
-	int 	x;
-	int 	y;
-
-	x = ((pa->mid_x[0] - pa->mid_x[1]) / 2) + pa->mid_x[1];
-	y = ((pa->mid_y[0] - pa->mid_y[1]) / 2) + pa->mid_y[1];
-	pa->mid_x[2] = (pa->win_x / 2) - x;
-	pa->mid_y[2] = (pa->win_y / 2) - y;
-
+	search_map_center(map, pa);
 	map_pass(map, plus, pa);
 //	mlx_pixel_put(pa->mlx_ptr, pa->win_ptr, x, y, 0xFF00FF);
-//	print_line(pa, x, y, 850, 600, 0xFF00FF);
-//	print_line(pa, pa->mid_x[0], pa->mid_y[0], pa->mid_x[1], pa->mid_y[1], 0xFF00FF);
-//	print_line(pa, pa->mid_x[1], pa->mid_y[0], pa->mid_x[0], pa->mid_y[1], 0xFF00FF);
+//	print_line(pa, x, y, 1000, 500, 0xFF00FF);
+//	print_line(pa, pa->size[0], pa->size[2], pa->size[1], pa->size[3], 0xFF00FF);
+//	print_line(pa, pa->size[1], pa->size[2], pa->size[0], pa->size[3], 0xFF00FF);
 
-	printf("pa->mid_x[0] - %d\npa->mid_y[0] - %d\npa->mid_x[1] - %d\npa->mid_y[1] - %d\nx - %d\ny - %d\npa->mid_x[2] - %d\npa->mid_y[2] - %d\n", pa->mid_x[0], pa->mid_y[0], pa->mid_x[1], pa->mid_y[1], x, y, pa->mid_x[2], pa->mid_y[2]);
+	printf("pa->size[0] - %d\npa->size[2] - %d\npa->size[1] - %d\npa->size[3] - %d\nx - %d\ny - %d\npa->mid[0] - %d\npa->mid[1] - %d\n", pa->size[0], pa->size[2], pa->size[1], pa->size[3], x, y, pa->mid[0], pa->mid[1]);
 }
