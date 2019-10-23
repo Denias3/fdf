@@ -18,13 +18,13 @@ int  key_press(int keycode, void *param)
 
 	paint = param;
 	if (keycode == 126)
-		shift_map(paint->val->start_point, 1);
+		shift_map(paint, 1);
 	else if (keycode == 124)
-		shift_map(paint->val->start_point, 2);
+		shift_map(paint, 2);
 	else if (keycode == 125)
-		shift_map(paint->val->start_point, 3);
+		shift_map(paint, 3);
 	else if (keycode == 123)
-		shift_map(paint->val->start_point, 4);
+		shift_map(paint, 4);
 	else if (keycode == 24 || keycode == 69)
 	{
 		approach(paint);

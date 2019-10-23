@@ -84,5 +84,7 @@ t_paint	*create_paint(t_val *val, t_point ***map)
 	paint->mid = (int*)malloc(sizeof(int) * 2);
 	paint->mid[0] = 0;
 	paint->mid[1] = 0;
+	paint->shift_x = 0;
+	paint->shift_y = 0;
 	return (paint);
 }

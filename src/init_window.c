@@ -16,7 +16,7 @@ void		draw_line(t_point *one, t_point *two, t_paint *paint)
 {
 	int 	var[10];
 
-	var[0] = one->x;;
+	var[0] = one->x;
 	var[1] = one->y;
 	var[2] = two->x;
 	var[3] = two->y;

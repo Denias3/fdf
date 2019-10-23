@@ -51,6 +51,8 @@ typedef	struct		s_paint
 	int				between;
 	int 			*size;
 	int				*mid;
+	int 			shift_x;
+	int 			shift_y;
 }					t_paint;
 
 void		print_line(t_paint *paint, int x1, int x2, int y1, int y2, int color);
@@ -78,7 +80,7 @@ int  				key_press(int keycode, void *param);
 void				make_accurate(t_paint *pa, t_val *val);
 void				distance(t_paint *paint);
 void				approach(t_paint *paint);
-void				shift_map(t_point *po, int sh, int bet);
+void				shift_map(t_paint *paint, int sh);
 void				twist_map_x(t_point *po, int sh);
 t_point				*copy_points(t_point *po);
 void				map_pass(t_point ***map, void f(t_point*, t_paint*), t_paint *pa);
