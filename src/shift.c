@@ -12,18 +12,18 @@
 
 #include "../include/fdf.h"
 
-void	shift_map(t_point *po, int sh, int bet)
+void	shift_map(t_point *po, int sh)
 {
 	while (po != NULL)
 	{
 		if (sh == 1)
-			po->y -= (bet / 10);
+			po->y -= 10;
 		else if (sh == 2)
-			po->x += (bet / 10);
+			po->x += 10;
 		else if (sh == 3)
-			po->y += (bet / 10);
+			po->y += 10;
 		else if (sh == 4)
-			po->x -= (bet / 10);
+			po->x -= 10;
 		po = po->next;
 	}
 }

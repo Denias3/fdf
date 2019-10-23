@@ -69,7 +69,7 @@ int init_window(t_point	***map, t_val *val)
 	print_line(paint, 0, paint->win_y - paint->u_indent, paint->win_x, paint->win_y - paint->u_indent, 0x404040);
 //	print_to(val->start_point, paint);
 	isometric(map, paint);
-	mlx_key_hook(paint->win_ptr, key_press, (void *)paint);
+	mlx_hook(paint->win_ptr, 2, 0, key_press, (void *)paint);
 	draw_map(map, paint);
 	mlx_loop(paint->mlx_ptr);
 	return (0);
