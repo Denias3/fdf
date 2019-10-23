@@ -27,7 +27,7 @@ static void iso(t_point *point, t_paint *pa)
 	point->y < pa->size[3] ? pa->size[3] = point->y : pa->size[3];
 }
 
-static void plus(t_point *point, t_paint *pa)
+void plus(t_point *point, t_paint *pa)
 {
 	point->x += pa->mid[0];
 	point->y += pa->mid[1];

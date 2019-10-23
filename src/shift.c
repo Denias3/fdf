@@ -39,23 +39,74 @@ void	shift_map(t_paint *paint, int sh)
 	}
 }
 
-void	twist_map_x(t_point *po, int sh)
+void	twist_map_x(t_paint *pa, t_point *po, int sh, t_val *val)
 {
+	int y0;
+
 	while (po != NULL)
 	{
 		if (sh == 0)
 		{
-			po->y = po->y * cos(0.174533) + po->z * sin(0.174533);
-			po->z = -po->y * sin(0.174533) + po->z * cos(0.174533);
+			y0 = po->y - val->max_y / 2;
+			po->y = val->max_y / 2 + y0 * cos(0.174533) + po->z * sin(0.174533);
+			po->z = -y0 * sin(0.174533) + po->z * cos(0.174533);
 		}
 		else if (sh == 1)
 		{
-			po->y = po->y * cos(-0.174533) + po->z * sin(-0.174533);
-			po->z = -po->y * sin(-0.174533) + po->z * cos(-0.174533);
+			y0 = po->y - val->max_y / 2;
+			po->y = val->max_y / 2 + y0 * cos(-0.174533) + po->z * sin(-0.174533);
+			po->z = -y0 * sin(-0.174533) + po->z * cos(-0.174533);
 		}
 		po = po->next;
 	}
+	search_map_center(pa->map, pa);
+	map_pass(pa->map, plus, pa);
 }
+
+void	twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val)
+{
+	int x0;
+
+	while (po != NULL)
+	{
+		if (sh == 0)
+		{
+			x0 = po->x - val->max_x / 2;
+			po->x = val->max_x / 2 + x0 * cos(0.174533) + po->z * sin(0.174533);
+			po->z = -x0 * sin(0.174533) + po->z * cos(0.174533);
+		}
+		else if (sh == 1)
+		{
+			x0 = po->x - val->max_x / 2;
+			po->x = val->max_x / 2 + x0 * cos(-0.174533) + po->z * sin(-0.174533);
+			po->z = -x0 * sin(-0.174533) + po->z * cos(-0.174533);
+		}
+		po = po->next;
+	}
+	search_map_center(pa->map, pa);
+	map_pass(pa->map, plus, pa);
+}
+//void    rotate_y(int znak, t_fdf *t)
+//{
+//	int     y;
+//	int     x;
+//	double  n;
+//	double  x0;
+//	​
+//	n = (znak == 0) ? 0.174533 : -0.174533;
+//	y = 0;
+//	while (y < t->height)
+//	{
+//		x = 0;
+//		while (x < t->width)
+//		{
+//			x0 = t->p[y][x].x - t->width / 2;
+//			t->p[y][x].x = t->width / 2 + x0 * cos(n) + t->p[y][x].z * sin(n);
+//			t->p[y][x].z = -x0 * sin(n) + t->p[y][x].z * cos(n);
+//			x++;
+//		}
+//		y++;
+//	}
 //
 //void    rotate_x(int znak, t_fdf *t)
 //{
@@ -80,25 +131,4 @@ void	twist_map_x(t_point *po, int sh)
 //	}
 //}
 //​
-//void    rotate_y(int znak, t_fdf *t)
-//{
-//	int     y;
-//	int     x;
-//	double  n;
-//	double  x0;
-//	​
-//	n = (znak == 0) ? 0.174533 : -0.174533;
-//	y = 0;
-//	while (y < t->height)
-//	{
-//		x = 0;
-//		while (x < t->width)
-//		{
-//			x0 = t->p[y][x].x - t->width / 2;
-//			t->p[y][x].x = t->width / 2 + x0 * cos(n) + t->p[y][x].z * sin(n);
-//			t->p[y][x].z = -x0 * sin(n) + t->p[y][x].z * cos(n);
-//			x++;
-//		}
-//		y++;
-//	}
 //}

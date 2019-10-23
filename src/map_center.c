@@ -22,6 +22,10 @@ static void search_size(t_point *point, t_paint *pa)
 
 void		search_map_center(t_point ***map, t_paint *pa)
 {
+	pa->size[0] = 0;
+	pa->size[1] = 99999999;
+	pa->size[2] = 0;
+	pa->size[3] = 99999999;
 	map_pass(map, search_size, pa);
 	int 	x;
 	int 	y;
@@ -30,4 +34,9 @@ void		search_map_center(t_point ***map, t_paint *pa)
 	y = ((pa->size[2] - pa->size[3]) / 2) + pa->size[3];
 	pa->mid[0] = (pa->win_x / 2) - x;
 	pa->mid[1] = (pa->win_y / 2) - y;
+//	printf("123\n");
+
+//	print_line(pa, x, y, 1000, 500, 0xFF00FF);
+//	print_line(pa, pa->size[0], pa->size[2], pa->size[1], pa->size[3], 0xFF00FF);
+//	print_line(pa, pa->size[1], pa->size[2], pa->size[0], pa->size[3], 0xFF00FF);
 }
