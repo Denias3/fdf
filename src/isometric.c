@@ -27,7 +27,7 @@ static void iso(t_point *point, t_paint *pa)
 	point->y < pa->size[3] ? pa->size[3] = point->y : pa->size[3];
 }
 
-static void plus(t_point *point, t_paint *pa)
+void plus(t_point *point, t_paint *pa)
 {
 	point->x += pa->mid[0];
 	point->y += pa->mid[1];
@@ -61,5 +61,5 @@ void		isometric(t_point ***map, t_paint *pa)
 //	print_line(pa, pa->size[0], pa->size[2], pa->size[1], pa->size[3], 0xFF00FF);
 //	print_line(pa, pa->size[1], pa->size[2], pa->size[0], pa->size[3], 0xFF00FF);
 
-	printf("pa->size[0] - %d\npa->size[2] - %d\npa->size[1] - %d\npa->size[3] - %d\nx - %d\ny - %d\npa->mid[0] - %d\npa->mid[1] - %d\n", pa->size[0], pa->size[2], pa->size[1], pa->size[3], x, y, pa->mid[0], pa->mid[1]);
+//	printf("pa->size[0] - %d\npa->size[2] - %d\npa->size[1] - %d\npa->size[3] - %d\nx - %d\ny - %d\npa->mid[0] - %d\npa->mid[1] - %d\n", pa->size[0], pa->size[2], pa->size[1], pa->size[3], x, y, pa->mid[0], pa->mid[1]);
 }

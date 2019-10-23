@@ -19,6 +19,7 @@ SRC = fdf.c\
 		key_press.c\
 		distance_approach.c\
 		shift.c\
+		map_center.c\
 		\
 		debag.c
 

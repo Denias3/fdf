@@ -21,7 +21,7 @@ void		print_line(t_paint *paint, int x1, int y1, int x2, int y2, int color)
 	const int signY = y1 < y2 ? 1 : -1;
 	int error = deltaX - deltaY;
 	int error2;
-	printf("one x(%d) y(%d)\ntwo x(%d) y(%d)\n\n",x1, y1, x2, y2);
+//	printf("one x(%d) y(%d)\ntwo x(%d) y(%d)\n\n",x1, y1, x2, y2);
 
 	mlx_pixel_put(paint->mlx_ptr, paint->win_ptr, x2, y2, color);
 	while(x1 != x2 || y1 != y2)

@@ -78,10 +78,12 @@ int  				key_press(int keycode, void *param);
 void				make_accurate(t_paint *pa, t_val *val);
 void				distance(t_paint *paint);
 void				approach(t_paint *paint);
-void				shift_map(t_point *po, int sh, int bet);
-void				twist_map_x(t_point *po, int sh);
+void				shift_map(t_point *po, int sh);
+void				twist_map_x(t_paint *pa, t_point *po, int sh, t_val *val);
+void				twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val);
 t_point				*copy_points(t_point *po);
 void				map_pass(t_point ***map, void f(t_point*, t_paint*), t_paint *pa);
 void				search_map_center(t_point ***map, t_paint *pa);
+void				plus(t_point *point, t_paint *pa);
 
 #endif
