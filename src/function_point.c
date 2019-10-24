@@ -67,7 +67,7 @@ t_paint	*create_paint(t_val *val, t_point ***map)
 	paint = (t_paint*)malloc(sizeof(t_paint));
 	paint->map = map;
 	paint->val = val;
-	paint->win_x = 2000;
+	paint->win_x = 1000;
 	paint->win_y = 1000;
 	paint->mlx_ptr = NULL;
 	paint->win_ptr = NULL;
