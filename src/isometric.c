@@ -14,8 +14,8 @@
 
 static void iso(t_point *point, t_paint *pa)
 {
-	int previous_x;
-	int previous_y;
+	double	previous_x;
+	double	previous_y;
 
 	previous_x = point->x;
 	previous_y = point->y;

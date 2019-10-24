@@ -20,17 +20,17 @@
 
 typedef	struct		s_point
 {
-	int				x;
-	int				y;
-	int				z;
+	double			x;
+	double			y;
+	double			z;
 	char			*color;
 	struct s_point	*next;
 }					t_point;
 
 typedef	struct		s_val
 {
-	int				max_x;
-	int 			max_y;
+	double			max_x;
+	double			max_y;
 	t_point			*static_point;
 	t_point			*start_point;
 	t_point			*end_point;
@@ -49,8 +49,8 @@ typedef	struct		s_paint
 	int				field_width;
 	int				field_height;
 	int				between;
-	int 			*size;
-	int				*mid;
+	double 			*size;
+	double			*mid;
 	int 			shift_x;
 	int 			shift_y;
 }					t_paint;

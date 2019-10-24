@@ -53,7 +53,7 @@ static void	find_indentation(t_paint *pa, t_val *val, int diraction, int percent
 
 void		size_designation(t_paint *pa, t_val *val, int percent)
 {
-	int		max;
+	double	max;
 	int		direction; /* 1 = upright, 2 = horizontally */
 
 	max = MAX(val->max_x, val->max_y);

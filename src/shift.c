@@ -41,50 +41,50 @@ void	shift_map(t_paint *paint, int sh)
 
 void	twist_map_x(t_paint *pa, t_point *po, int sh, t_val *val)
 {
-	int y0;
+	double y0;
 
 	while (po != NULL)
 	{
+		y0 = po->y - val->max_y / 2;
 		if (sh == 0)
 		{
-			y0 = po->y - val->max_y / 2;
-			po->y = val->max_y / 2 + y0 * cos(0.174533) + po->z * sin(0.174533);
-			po->z = -y0 * sin(0.174533) + po->z * cos(0.174533);
+			po->y = val->max_y / 2 + y0 * cos(0.1) + po->z * sin(0.1);
+			po->z = -y0 * sin(0.1) + po->z * cos(0.1);
 		}
 		else if (sh == 1)
 		{
-			y0 = po->y - val->max_y / 2;
-			po->y = val->max_y / 2 + y0 * cos(-0.174533) + po->z * sin(-0.174533);
-			po->z = -y0 * sin(-0.174533) + po->z * cos(-0.174533);
+			po->y = val->max_y / 2 + y0 * cos(-0.1) + po->z * sin(-0.1);
+			po->z = -y0 * sin(-0.1) + po->z * cos(-0.1);
 		}
 		po = po->next;
 	}
 	search_map_center(pa->map, pa);
 	map_pass(pa->map, plus, pa);
+//	printf("pa->mid[0] - %d\npa->mid[1] - %d\n", pa->mid[0], pa->mid[1]);
 }
 
 void	twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val)
 {
-	int x0;
+	double x0;
 
 	while (po != NULL)
 	{
+		x0 = po->x - val->max_x / 2;
 		if (sh == 0)
 		{
-			x0 = po->x - val->max_x / 2;
-			po->x = val->max_x / 2 + x0 * cos(0.174533) + po->z * sin(0.174533);
-			po->z = -x0 * sin(0.174533) + po->z * cos(0.174533);
+			po->x = val->max_x / 2 + x0 * cos(0.1) + po->z * sin(0.1);
+			po->z = -x0 * sin(0.1) + po->z * cos(0.1);
 		}
 		else if (sh == 1)
 		{
-			x0 = po->x - val->max_x / 2;
-			po->x = val->max_x / 2 + x0 * cos(-0.174533) + po->z * sin(-0.174533);
-			po->z = -x0 * sin(-0.174533) + po->z * cos(-0.174533);
+			po->x = val->max_x / 2 + x0 * cos(-0.1) + po->z * sin(-0.1);
+			po->z = -x0 * sin(-0.1) + po->z * cos(-0.1);
 		}
 		po = po->next;
 	}
 	search_map_center(pa->map, pa);
 	map_pass(pa->map, plus, pa);
+//	printf("pa->mid[0] - %d\npa->mid[1] - %d\n", pa->mid[0], pa->mid[1]);
 }
 //void    rotate_y(int znak, t_fdf *t)
 //{
@@ -93,7 +93,7 @@ void	twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val)
 //	double  n;
 //	double  x0;
 //	​
-//	n = (znak == 0) ? 0.174533 : -0.174533;
+//	n = (znak == 0) ? 0.1 : -0.1;
 //	y = 0;
 //	while (y < t->height)
 //	{
@@ -115,7 +115,7 @@ void	twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val)
 //	double  n;
 //	double  y0;
 //	​
-//	n = (znak == 0) ? 0.174533 : -0.174533;
+//	n = (znak == 0) ? 0.1 : -0.1;
 //	y = 0;
 //	while (y < t->height)
 //	{

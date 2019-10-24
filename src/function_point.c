@@ -17,9 +17,9 @@ t_point	*create_point(void)
 	t_point *po;
 
 	po = (t_point*)malloc(sizeof(t_point));
-	po->x = -1;
-	po->y = 0;
-	po->z = -1;
+	po->x = -1.0;
+	po->y = 0.0;
+	po->z = -1.0;
 	po->color = NULL;
 	po->next = NULL;
 	return (po);
@@ -52,8 +52,8 @@ t_val	*create_val(t_point *po)
 	t_val *val;
 
 	val = (t_val*)malloc(sizeof(t_val));
-	val->max_x = -1;
-	val->max_y = -1;
+	val->max_x = -1.0;
+	val->max_y = -1.0;
 	val->end_point = po;
 	val->start_point = po;
 	val->static_point = NULL;
@@ -76,14 +76,14 @@ t_paint	*create_paint(t_val *val, t_point ***map)
 	paint->field_width = 0;
 	paint->field_height = 0;
 	paint->between = 0;
-	paint->size = (int*)malloc(sizeof(int) * 4);
-	paint->size[0] = 0;
-	paint->size[1] = 99999999;
-	paint->size[2] = 0;
-	paint->size[3] = 99999999;
-	paint->mid = (int*)malloc(sizeof(int) * 2);
-	paint->mid[0] = 0;
-	paint->mid[1] = 0;
+	paint->size = (double*)malloc(sizeof(double) * 4);
+	paint->size[0] = 0.0;
+	paint->size[1] = 99999999.0;
+	paint->size[2] = 0.0;
+	paint->size[3] = 99999999.0;
+	paint->mid = (double*)malloc(sizeof(double) * 2);
+	paint->mid[0] = 0.0;
+	paint->mid[1] = 0.0;
 	paint->shift_x = 0;
 	paint->shift_y = 0;
 	return (paint);
