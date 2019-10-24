@@ -59,5 +59,8 @@ void		size_designation(t_paint *pa, t_val *val, int percent)
 	max = MAX(val->max_x, val->max_y);
 	direction = DD(max, val->max_x);
 	find_indentation(pa, val, direction, percent);
+	if (pa->between == 0)
+		pa->between = 1;
 	make_accurate(pa, val);
+	printf("pa->between - %d\n", pa->between);
 }

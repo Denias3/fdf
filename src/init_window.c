@@ -48,7 +48,7 @@ int init_window(t_point	***map, t_val *val)
 	t_paint	*paint;
 
 	paint = create_paint(val, map);
-	size_designation(paint, val, 20);
+	size_designation(paint, val, 50);
 	paint->mlx_ptr = mlx_init();
 	paint->win_ptr = mlx_new_window(paint->mlx_ptr, paint->win_x, paint->win_y, "fdf");
 	starting_position(val->start_point, paint);
