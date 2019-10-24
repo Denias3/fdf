@@ -27,7 +27,8 @@ void	replace_op(t_point *replace, t_point *new)
 void	distance(t_paint *paint)
 {
 	replace_op(paint->val->start_point, paint->val->static_point);
-	paint->between = paint->between - 1;
+	if (paint->between > 1)
+		paint->between = paint->between - 1;
 	make_accurate(paint, paint->val);
 }
 

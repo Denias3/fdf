@@ -25,17 +25,17 @@ int  key_press(int keycode, void *param)
 		shift_map(paint, 3);
 	else if (keycode == 123)
 		shift_map(paint, 4);
-	else if (keycode == 24 || keycode == 69)
+	else if ((keycode == 24 || keycode == 69))
 	{
 		approach(paint);
 		starting_position(paint->val->start_point, paint);
-		isometric(paint->map, paint);
+		twist_map_x_y(paint, paint->val->start_point, paint->val);
 	}
-	else if (keycode == 27 || keycode == 78)
+	else if ((keycode == 27 || keycode == 78) && paint->between > 0)
 	{
 		distance(paint);
 		starting_position(paint->val->start_point, paint);
-		isometric(paint->map, paint);
+		twist_map_x_y(paint, paint->val->start_point, paint->val);
 	}
 	else if (keycode == 13 || keycode == 1 || keycode == 0 || keycode == 2)
 	{
@@ -48,6 +48,7 @@ int  key_press(int keycode, void *param)
 		else if (keycode == 2)
 			paint->cos_sin_x -= 0.174533;
 		replace_op(paint->val->start_point, paint->val->static_point);
+		make_accurate(paint, paint->val);
 		starting_position(paint->val->start_point, paint);
 		twist_map_x_y(paint, paint->val->start_point, paint->val);
 	}
