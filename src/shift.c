@@ -102,5 +102,6 @@ void	twist_map_x_y(t_paint *pa, t_point *po, t_val *val)
 	}
 	search_map_center(pa->map, pa);
 	map_pass(pa->map, plus, pa);
+	search_map_center(pa->map, pa);
 }
 
