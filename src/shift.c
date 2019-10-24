@@ -48,13 +48,13 @@ void	twist_map_x(t_paint *pa, t_point *po, int sh, t_val *val)
 		y0 = po->y - val->max_y / 2;
 		if (sh == 0)
 		{
-			po->y = val->max_y / 2 + y0 * cos(0.1) + po->z * sin(0.1);
-			po->z = -y0 * sin(0.1) + po->z * cos(0.1);
+			po->y = val->max_y / 2 + y0 * cos(0.174533) + po->z * sin(0.174533);
+			po->z = -y0 * sin(0.174533) + po->z * cos(0.174533);
 		}
 		else if (sh == 1)
 		{
-			po->y = val->max_y / 2 + y0 * cos(-0.1) + po->z * sin(-0.1);
-			po->z = -y0 * sin(-0.1) + po->z * cos(-0.1);
+			po->y = val->max_y / 2 + y0 * cos(-0.174533) + po->z * sin(-0.174533);
+			po->z = -y0 * sin(-0.174533) + po->z * cos(-0.174533);
 		}
 		po = po->next;
 	}
@@ -72,13 +72,13 @@ void	twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val)
 		x0 = po->x - val->max_x / 2;
 		if (sh == 0)
 		{
-			po->x = val->max_x / 2 + x0 * cos(0.1) + po->z * sin(0.1);
-			po->z = -x0 * sin(0.1) + po->z * cos(0.1);
+			po->x = val->max_x / 2 + x0 * cos(0.174533) + po->z * sin(0.174533);
+			po->z = -x0 * sin(0.174533) + po->z * cos(0.174533);
 		}
 		else if (sh == 1)
 		{
-			po->x = val->max_x / 2 + x0 * cos(-0.1) + po->z * sin(-0.1);
-			po->z = -x0 * sin(-0.1) + po->z * cos(-0.1);
+			po->x = val->max_x / 2 + x0 * cos(-0.174533) + po->z * sin(-0.174533);
+			po->z = -x0 * sin(-0.174533) + po->z * cos(-0.174533);
 		}
 		po = po->next;
 	}
@@ -86,49 +86,4 @@ void	twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val)
 	map_pass(pa->map, plus, pa);
 //	printf("pa->mid[0] - %d\npa->mid[1] - %d\n", pa->mid[0], pa->mid[1]);
 }
-//void    rotate_y(int znak, t_fdf *t)
-//{
-//	int     y;
-//	int     x;
-//	double  n;
-//	double  x0;
-//	​
-//	n = (znak == 0) ? 0.1 : -0.1;
-//	y = 0;
-//	while (y < t->height)
-//	{
-//		x = 0;
-//		while (x < t->width)
-//		{
-//			x0 = t->p[y][x].x - t->width / 2;
-//			t->p[y][x].x = t->width / 2 + x0 * cos(n) + t->p[y][x].z * sin(n);
-//			t->p[y][x].z = -x0 * sin(n) + t->p[y][x].z * cos(n);
-//			x++;
-//		}
-//		y++;
-//	}
-//
-//void    rotate_x(int znak, t_fdf *t)
-//{
-//	int     y;
-//	int     x;
-//	double  n;
-//	double  y0;
-//	​
-//	n = (znak == 0) ? 0.1 : -0.1;
-//	y = 0;
-//	while (y < t->height)
-//	{
-//		x = 0;
-//		while (x < t->width)
-//		{
-//			y0 = t->p[y][x].y - t->height / 2;
-//			t->p[y][x].y = t->height / 2 + y0 * cos(n) + t->p[y][x].z * sin(n);
-//			t->p[y][x].z = -y0 * sin(n) + t->p[y][x].z * cos(n);
-//			x++;
-//		}
-//		y++;
-//	}
-//}
-//​
-//}
+
