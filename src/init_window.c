@@ -43,15 +43,6 @@ void		draw_line(t_point *one, t_point *two, t_paint *paint)
 	}
 }
 
-void print_to(t_point *po, t_paint *paint)
-{
-	while (po != NULL)
-	{
-		mlx_pixel_put(paint->mlx_ptr, paint->win_ptr, po->x, po->y, 0xff0505);
-		po = po->next;
-	}
-}
-
 int init_window(t_point	***map, t_val *val)
 {
 	t_paint	*paint;

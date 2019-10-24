@@ -29,8 +29,8 @@ static void iso(t_point *point, t_paint *pa)
 
 void plus(t_point *point, t_paint *pa)
 {
-	point->x += pa->mid[0];
-	point->y += pa->mid[1];
+	point->x += pa->mid[0] + pa->shift_x;
+	point->y += pa->mid[1] + pa->shift_y;
 }
 
 void		map_pass(t_point ***map, void f(t_point*, t_paint*), t_paint *pa)

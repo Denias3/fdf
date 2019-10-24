@@ -19,8 +19,8 @@ void	starting_position(t_point *po, t_paint *paint)
 		po->x = paint->between * po->x;
 		po->y = paint->between * po->y;
 		po->z = paint->between * po->z;
-		po->x += paint->h_indent + paint->shift_x;
-		po->y += paint->u_indent + paint->shift_y;
+		po->x += paint->h_indent;
+		po->y += paint->u_indent;
 		po = po->next;
 	}
 }

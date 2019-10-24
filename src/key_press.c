@@ -37,14 +37,20 @@ int  key_press(int keycode, void *param)
 		starting_position(paint->val->start_point, paint);
 		isometric(paint->map, paint);
 	}
-	else if (keycode == 13)
-		twist_map_x(paint, paint->val->start_point, 0, paint->val);
-	else if (keycode == 1)
-		twist_map_x(paint, paint->val->start_point, 1, paint->val);
-	else if (keycode == 0)
-		twist_map_y(paint, paint->val->start_point, 0, paint->val);
-	else if (keycode == 2)
-		twist_map_y(paint, paint->val->start_point, 1, paint->val);
+	else if (keycode == 13 || keycode == 1 || keycode == 0 || keycode == 2)
+	{
+		if (keycode == 13)
+			paint->cos_sin_y += 0.174533;
+		else if (keycode == 1)
+			paint->cos_sin_y -= 0.174533;
+		else if (keycode == 0)
+			paint->cos_sin_x += 0.174533;
+		else if (keycode == 2)
+			paint->cos_sin_x -= 0.174533;
+		replace_op(paint->val->start_point, paint->val->static_point);
+		starting_position(paint->val->start_point, paint);
+		twist_map_x_y(paint, paint->val->start_point, paint->val);
+	}
 	mlx_clear_window(paint->mlx_ptr, paint->win_ptr);
 	draw_map(paint->map, paint);
 	return (0);

@@ -41,51 +41,71 @@ void	shift_map(t_paint *paint, int sh)
 
 void	twist_map_x(t_paint *pa, t_point *po, int sh, t_val *val)
 {
-	double y0;
+	int y0;
 
 	while (po != NULL)
 	{
-		y0 = po->y - val->max_y / 2;
 		if (sh == 0)
 		{
-			po->y = val->max_y / 2 + y0 * cos(0.1) + po->z * sin(0.1);
-			po->z = -y0 * sin(0.1) + po->z * cos(0.1);
+			y0 = po->y - val->max_y / 2;
+			po->y = val->max_y / 2 + y0 * cos(0.174533) + po->z * sin(0.174533);
+			po->z = -y0 * sin(0.174533) + po->z * cos(0.174533);
 		}
 		else if (sh == 1)
 		{
-			po->y = val->max_y / 2 + y0 * cos(-0.1) + po->z * sin(-0.1);
-			po->z = -y0 * sin(-0.1) + po->z * cos(-0.1);
+			y0 = po->y - val->max_y / 2;
+			po->y = val->max_y / 2 + y0 * cos(-0.174533) + po->z * sin(-0.174533);
+			po->z = -y0 * sin(-0.174533) + po->z * cos(-0.174533);
 		}
 		po = po->next;
 	}
 	search_map_center(pa->map, pa);
 	map_pass(pa->map, plus, pa);
-//	printf("pa->mid[0] - %d\npa->mid[1] - %d\n", pa->mid[0], pa->mid[1]);
 }
 
 void	twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val)
 {
-	double x0;
+	int x0;
 
 	while (po != NULL)
 	{
-		x0 = po->x - val->max_x / 2;
 		if (sh == 0)
 		{
-			po->x = val->max_x / 2 + x0 * cos(0.1) + po->z * sin(0.1);
-			po->z = -x0 * sin(0.1) + po->z * cos(0.1);
+			x0 = po->x - val->max_x / 2;
+			po->x = val->max_x / 2 + x0 * cos(0.174533) + po->z * sin(0.174533);
+			po->z = -x0 * sin(0.174533) + po->z * cos(0.174533);
 		}
 		else if (sh == 1)
 		{
-			po->x = val->max_x / 2 + x0 * cos(-0.1) + po->z * sin(-0.1);
-			po->z = -x0 * sin(-0.1) + po->z * cos(-0.1);
+			x0 = po->x - val->max_x / 2;
+			po->x = val->max_x / 2 + x0 * cos(-0.174533) + po->z * sin(-0.174533);
+			po->z = -x0 * sin(-0.174533) + po->z * cos(-0.174533);
 		}
 		po = po->next;
 	}
 	search_map_center(pa->map, pa);
 	map_pass(pa->map, plus, pa);
-//	printf("pa->mid[0] - %d\npa->mid[1] - %d\n", pa->mid[0], pa->mid[1]);
 }
+
+void	twist_map_x_y(t_paint *pa, t_point *po, t_val *val)
+{
+	int y0;
+	int x0;
+
+	while (po != NULL)
+	{
+		x0 = po->x - val->max_x / 2;
+		y0 = po->y - val->max_y / 2;
+		po->x = val->max_x / 2 + x0 * cos(pa->cos_sin_x) + po->z * sin(pa->cos_sin_x);
+		po->z = -x0 * sin(pa->cos_sin_x) + po->z * cos(pa->cos_sin_x);
+		po->y = val->max_y / 2 + y0 * cos(pa->cos_sin_y) + po->z * sin(pa->cos_sin_y);
+		po->z = -y0 * sin(pa->cos_sin_y) + po->z * cos(pa->cos_sin_y);
+		po = po->next;
+	}
+	search_map_center(pa->map, pa);
+	map_pass(pa->map, plus, pa);
+}
+
 //void    rotate_y(int znak, t_fdf *t)
 //{
 //	int     y;
@@ -93,7 +113,7 @@ void	twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val)
 //	double  n;
 //	double  x0;
 //	​
-//	n = (znak == 0) ? 0.1 : -0.1;
+//	n = (znak == 0) ? 0.174533 : -0.174533;
 //	y = 0;
 //	while (y < t->height)
 //	{
@@ -115,7 +135,7 @@ void	twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val)
 //	double  n;
 //	double  y0;
 //	​
-//	n = (znak == 0) ? 0.1 : -0.1;
+//	n = (znak == 0) ? 0.174533 : -0.174533;
 //	y = 0;
 //	while (y < t->height)
 //	{

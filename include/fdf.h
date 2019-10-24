@@ -20,17 +20,17 @@
 
 typedef	struct		s_point
 {
-	double			x;
-	double			y;
-	double			z;
+	int				x;
+	int 			y;
+	int 			z;
 	char			*color;
 	struct s_point	*next;
 }					t_point;
 
 typedef	struct		s_val
 {
-	double			max_x;
-	double			max_y;
+	int 			max_x;
+	int 			max_y;
 	t_point			*static_point;
 	t_point			*start_point;
 	t_point			*end_point;
@@ -49,10 +49,12 @@ typedef	struct		s_paint
 	int				field_width;
 	int				field_height;
 	int				between;
-	double 			*size;
-	double			*mid;
+	int 			*size;
+	int				*mid;
 	int 			shift_x;
 	int 			shift_y;
+	double 			cos_sin_x;
+	double 			cos_sin_y;
 }					t_paint;
 
 void		print_line(t_paint *paint, int x1, int x2, int y1, int y2, int color);
@@ -87,5 +89,8 @@ t_point				*copy_points(t_point *po);
 void				map_pass(t_point ***map, void f(t_point*, t_paint*), t_paint *pa);
 void				search_map_center(t_point ***map, t_paint *pa);
 void				plus(t_point *point, t_paint *pa);
+void				replace_op(t_point *replace, t_point *new);
+void				isometric_(t_point ***map, t_paint *pa);
+void				twist_map_x_y(t_paint *pa, t_point *po, t_val *val);
 
 #endif
