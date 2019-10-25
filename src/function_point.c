@@ -56,7 +56,7 @@ t_val	*create_val(t_point *po)
 	val->max_y = -1;
 	val->end_point = po;
 	val->start_point = po;
-	val->static_point = NULL;
+	val->init_point = NULL;
 	return (val);
 }
 

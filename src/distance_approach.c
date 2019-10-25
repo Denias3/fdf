@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   distance.c                                         :+:      :+:    :+:   */
+/*   distance_approach.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emeha <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -26,15 +26,15 @@ void	replace_op(t_point *replace, t_point *new)
 
 void	distance(t_paint *paint)
 {
-	replace_op(paint->val->start_point, paint->val->static_point);
+//	replace_op(paint->val->start_point, paint->val->init_point);
+//	make_accurate(paint, paint->val);
 	if (paint->between > 1)
 		paint->between = paint->between - 1;
-	make_accurate(paint, paint->val);
 }
 
 void	approach(t_paint *paint)
 {
-	replace_op(paint->val->start_point, paint->val->static_point);
+//	replace_op(paint->val->start_point, paint->val->init_point);
+//	make_accurate(paint, paint->val);
 	paint->between = paint->between + 1;
-	make_accurate(paint, paint->val);
 }

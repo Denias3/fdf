@@ -31,7 +31,7 @@ typedef	struct		s_val
 {
 	int 			max_x;
 	int 			max_y;
-	t_point			*static_point;
+	t_point			*init_point;
 	t_point			*start_point;
 	t_point			*end_point;
 }					t_val;
