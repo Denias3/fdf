@@ -55,6 +55,7 @@ typedef	struct		s_paint
 	int 			shift_y;
 	double 			cos_sin_x;
 	double 			cos_sin_y;
+	double 			cos_sin_z;
 }					t_paint;
 
 void		print_line(t_paint *paint, int x1, int x2, int y1, int y2, int color);
@@ -83,8 +84,7 @@ void				make_accurate(t_paint *pa, t_val *val);
 void				distance(t_paint *paint);
 void				approach(t_paint *paint);
 void				shift_map(t_paint *paint, int sh);
-void				twist_map_x(t_paint *pa, t_point *po, int sh, t_val *val);
-void				twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val);
+void				twist_map_z(t_paint *pa, t_point *po, t_val *val);
 t_point				*copy_points(t_point *po);
 void				map_pass(t_point ***map, void f(t_point*, t_paint*), t_paint *pa);
 void				search_map_center(t_point ***map, t_paint *pa);

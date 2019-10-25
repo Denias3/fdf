@@ -39,46 +39,17 @@ void	shift_map(t_paint *paint, int sh)
 	}
 }
 
-void	twist_map_x(t_paint *pa, t_point *po, int sh, t_val *val)
+void	twist_map_z(t_paint *pa, t_point *po, t_val *val)
 {
 	int y0;
-
-	while (po != NULL)
-	{
-		y0 = po->y - val->max_y / 2;
-		if (sh == 0)
-		{
-			po->y = val->max_y / 2 + y0 * cos(0.174533) + po->z * sin(0.174533);
-			po->z = -y0 * sin(0.174533) + po->z * cos(0.174533);
-		}
-		else if (sh == 1)
-		{
-			po->y = val->max_y / 2 + y0 * cos(-0.174533) + po->z * sin(-0.174533);
-			po->z = -y0 * sin(-0.174533) + po->z * cos(-0.174533);
-		}
-		po = po->next;
-	}
-	search_map_center(pa->map, pa);
-	map_pass(pa->map, plus, pa);
-}
-
-void	twist_map_y(t_paint *pa, t_point *po, int sh, t_val *val)
-{
 	int x0;
 
 	while (po != NULL)
 	{
 		x0 = po->x - val->max_x / 2;
-		if (sh == 0)
-		{
-			po->x = val->max_x / 2 + x0 * cos(0.174533) + po->z * sin(0.174533);
-			po->z = -x0 * sin(0.174533) + po->z * cos(0.174533);
-		}
-		else if (sh == 1)
-		{
-			po->x = val->max_x / 2 + x0 * cos(-0.174533) + po->z * sin(-0.174533);
-			po->z = -x0 * sin(-0.174533) + po->z * cos(-0.174533);
-		}
+		y0 = po->y - val->max_y / 2;
+		po->x = val->max_x / 2 + x0 * cos(pa->cos_sin_z) - y0 * sin(pa->cos_sin_z);
+		po->y = val->max_x / 2 + x0 * sin(pa->cos_sin_z) + y0 * cos(pa->cos_sin_z);
 		po = po->next;
 	}
 	search_map_center(pa->map, pa);
@@ -94,14 +65,14 @@ void	twist_map_x_y(t_paint *pa, t_point *po, t_val *val)
 	{
 		x0 = po->x - val->max_x / 2;
 		y0 = po->y - val->max_y / 2;
-		po->x = val->max_x / 2 + x0 * cos(pa->cos_sin_x) + po->z * sin(pa->cos_sin_x);
-		po->z = -x0 * sin(pa->cos_sin_x) + po->z * cos(pa->cos_sin_x);
-		po->y = val->max_y / 2 + y0 * cos(pa->cos_sin_y) + po->z * sin(pa->cos_sin_y);
-		po->z = -y0 * sin(pa->cos_sin_y) + po->z * cos(pa->cos_sin_y);
+		po->y = val->max_y / 2 + y0 * cos(pa->cos_sin_x) + po->z * sin(pa->cos_sin_x);
+		po->z = -y0 * sin(pa->cos_sin_x) + po->z * cos(pa->cos_sin_x);
+		po->x = val->max_x / 2 + x0 * cos(pa->cos_sin_y) + po->z * sin(pa->cos_sin_y);
+		po->z = -x0 * sin(pa->cos_sin_y) + po->z * cos(pa->cos_sin_y);
 		po = po->next;
 	}
 	search_map_center(pa->map, pa);
 	map_pass(pa->map, plus, pa);
-	search_map_center(pa->map, pa);
+//	search_map_center(pa->map, pa);
 }
 

@@ -88,5 +88,6 @@ t_paint	*create_paint(t_val *val, t_point ***map)
 	paint->shift_y = 0;
 	paint->cos_sin_x = 0;
 	paint->cos_sin_y = 0;
+	paint->cos_sin_z = 0;
 	return (paint);
 }
