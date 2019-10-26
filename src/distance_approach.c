@@ -61,7 +61,6 @@ void	distance(t_paint *paint)
 	if (paint->between > 1)
 		paint->between = paint->between - 1;
 	replace_op_st(paint->val->start_point, paint->val->init_point, paint);
-//	twist_map_x_y_z(paint, paint->val->start_point, paint->val);
 	if (paint->iso)
 		isometric(paint->map, paint);
 }
@@ -70,7 +69,6 @@ void	approach(t_paint *paint)
 {
 	paint->between = paint->between + 1;
 	replace_op_st(paint->val->start_point, paint->val->init_point, paint);
-//	twist_map_x_y_z(paint, paint->val->start_point, paint->val);
 	if (paint->iso)
 		isometric(paint->map, paint);
 }

@@ -22,6 +22,6 @@ int			main(int argc, char **argv)
 	map = validation(argv[1], &val);
 	val->init_point = copy_points(val->start_point);
 	init_window(map, val);
-	map_val_free(map, val);
+
 	return (0);
 }

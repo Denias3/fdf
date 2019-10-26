@@ -51,7 +51,6 @@ typedef	struct		s_paint
 	int				field_height;
 	int				between;
 	int				between_st;
-	int 			*size;
 	int				*mid;
 	int 			shift_x;
 	int 			shift_y;
@@ -70,7 +69,7 @@ t_val				*create_val(t_point *po);
 int					ft_atoi_er(const char *str, int *er);
 void				free_split(char **split);
 t_point				***map_creation(t_point *po, t_val *val);
-void                map_val_free(t_point ***map, t_val *val);
+void				map_val_free(t_point ***map, t_paint *paint);
 int					init_window(t_point	***map, t_val *val);
 t_paint				*create_paint(t_val *val, t_point ***map);
 void				draw_line(t_point *one, t_point *two, t_paint *paint);

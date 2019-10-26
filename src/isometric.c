@@ -21,10 +21,8 @@ static void iso(t_point *point, t_paint *pa)
 	previous_y = point->y;
 	point->x = (previous_x - previous_y) * cos(0.523599);
 	point->y = -point->z + (previous_x + previous_y) * sin(0.523599);
-	point->x > pa->size[0] ? pa->size[0] = point->x : pa->size[0];
-	point->x < pa->size[1] ? pa->size[1] = point->x : pa->size[1];
-	point->y > pa->size[2] ? pa->size[2] = point->y : pa->size[2];
-	point->y < pa->size[3] ? pa->size[3] = point->y : pa->size[3];
+	pa->shift_x--;
+	pa->shift_x++;
 }
 
 void plus(t_point *point, t_paint *pa)
@@ -56,7 +54,6 @@ void		isometric(t_point ***map, t_paint *pa)
 	map_pass(map, iso, pa);
 	search_map_center(map, pa);
 	map_pass(map, plus, pa);
-//	mlx_pixel_put(pa->mlx_ptr, pa->win_ptr, x, y, 0xFF00FF);
 //	print_line(pa, x, y, 1000, 500, 0xFF00FF);
 //	print_line(pa, pa->size[0], pa->size[2], pa->size[1], pa->size[3], 0xFF00FF);
 //	print_line(pa, pa->size[1], pa->size[2], pa->size[0], pa->size[3], 0xFF00FF);

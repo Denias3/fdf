@@ -45,7 +45,6 @@ int  key_press(int keycode, void *param)
 		else if (keycode == 14)
 			paint->cos_sin_z -= 0.174533;
 		replace_op_st(paint->val->start_point, paint->val->init_point, paint);
-//		twist_map_x_y_z(paint, paint->val->start_point, paint->val);
 		if (paint->iso)
 			isometric(paint->map, paint);
 	}

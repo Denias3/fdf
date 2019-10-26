@@ -63,5 +63,5 @@ void		size_designation(t_paint *pa, t_val *val, int percent)
 		pa->between = 1;
 	pa->between_st = pa->between;
 	make_accurate(pa, val);
-	printf("pa->between - %d\n", pa->between);
+//	printf("pa->between - %d\n", pa->between);
 }

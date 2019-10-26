@@ -12,7 +12,21 @@
 
 #include "../include/fdf.h"
 
-void		map_val_free(t_point ***map, t_val *val)
+void		free_points(t_point *po)
+{
+	t_point *tmp;
+
+	while (po != NULL)
+	{
+		tmp = po;
+		po = po->next;
+		if (tmp->color != NULL)
+			free(tmp->color);
+		free(tmp);
+	}
+}
+
+void		map_val_free(t_point ***map, t_paint *paint)
 {
 	int		x;
 	int		y;
@@ -32,7 +46,10 @@ void		map_val_free(t_point ***map, t_val *val)
 		y++;
 	}
 	free(map);
-	free(val);
+	free_points(paint->val->init_point);
+	free(paint->val);
+	free(paint->mid);
+	free(paint);
 }
 
 t_point		***map_creation(t_point *po, t_val *val)

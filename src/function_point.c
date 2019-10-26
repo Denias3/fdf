@@ -78,11 +78,6 @@ t_paint	*create_paint(t_val *val, t_point ***map)
 	paint->field_height = 0;
 	paint->between = 0;
 	paint->between_st = 0;
-	paint->size = (int*)malloc(sizeof(int) * 4);
-	paint->size[0] = 0;
-	paint->size[1] = 99999999;
-	paint->size[2] = 0;
-	paint->size[3] = 99999999;
 	paint->mid = (int*)malloc(sizeof(int) * 2);
 	paint->mid[0] = 0;
 	paint->mid[1] = 0;

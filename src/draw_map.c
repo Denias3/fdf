@@ -23,6 +23,8 @@ void	draw_map(t_point ***map, t_paint *paint)
 		x = 0;
 		while (map[y][x] != NULL)
 		{
+			paint->shift_x++;
+			paint->shift_x--;
 			if (map[y][x + 1] && map[y][x])
 				draw_line(map[y][x],map[y][x + 1], paint);
 			if (map[y + 1] && map[y + 1][x] && map[y][x])
