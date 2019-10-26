@@ -12,45 +12,31 @@
 
 #include "../include/fdf.h"
 
-static void		check_num_str(char *str)
+unsigned int	ft_atoi_base(char *str)
 {
-	int		i;
+	int				i;
+	int				j;
+	unsigned int	num;
+	char			*arr;
 
-	i = 0;
-	while (str[i])
-	{
-		if (((str[i] >= '\0' && str[i] < '0') ||(str[i] > '9' && str[i] < 'A')
-			 || (str[i] > 'F')) && str[i] != '-')
-			file_error();
-		i++;
-	}
-}
-
-int				ft_atoi_base(char *str, char *base)
-{
-	int		dec;
-	int		i;
-	int		j;
-	int		y;
-	int		sgn;
-
-	j = 0;
-	dec = 0;
-	sgn = 1;
-	check_num_str(str);
-	i = ft_strlen(str, '\0') - 1;
-	while (str[i] && str[i] != '-' && str[i] != '+' && i >= 0)
-	{
-		y = 0;
-		while (base[y] && str[i] != base[y])
-			y++;
-		if (y == ft_strlen(base, '\0'))
-			y = 0;
-		dec += y * power(ft_strlen(base, '\0'), j++);
-		i--;
-	}
-	while (str[i] && i >= 0)
-		if (str[i--] == '-')
-			sgn *= -1;
-	return (dec * sgn);
+	i = -1;
+	num = 0;
+	j = -1;
+	arr = (char *)ft_memalloc(sizeof(char) * 17);
+	while (++i < 16)
+		if (i < 10)
+			arr[i] = i + '0';
+		else
+			arr[i] = i + 55;
+	i = -1;
+	while (str[++i] != ' ' && str[i] != '\0')
+		while (arr[++j] != '\0')
+			if (ft_toupper(str[i]) == arr[j])
+			{
+				num = num * 16 + j;
+				j = -1;
+				break ;
+			}
+	ft_strdel(&arr);
+	return (num);
 }
