@@ -32,6 +32,7 @@ void	pars_color(t_point *po, char *s)
 
 	split = ft_strsplit(s, ',');
 	po->color = ft_atoi_base(split[1], 16);
+	free(split[1]);
 	free(split[0]);
 	free(split);
 }
