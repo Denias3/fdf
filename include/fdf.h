@@ -86,13 +86,13 @@ void				make_accurate(t_paint *pa, t_val *val);
 void				distance(t_paint *paint);
 void				approach(t_paint *paint);
 void				shift_map(t_paint *paint, int sh);
-void				twist_map_z(t_paint *pa, t_point *po, t_val *val);
+//void				twist_map_z(t_paint *pa, t_point *po, t_val *val);
 t_point				*copy_points(t_point *po);
 void				map_pass(t_point ***map, void f(t_point*, t_paint*), t_paint *pa);
 void				search_map_center(t_point ***map, t_paint *pa);
 void				plus(t_point *point, t_paint *pa);
 void				replace_op(t_point *replace, t_point *new);
 void				isometric_(t_point ***map, t_paint *pa);
-void				twist_map_x_y(t_paint *pa, t_point *po, t_val *val);
+void				twist_map_x_y_z(t_paint *paint, t_point *po, t_val *val);
 
 #endif
