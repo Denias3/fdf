@@ -62,5 +62,6 @@ int init_window(t_point	***map, t_val *val)
 //	mlx_hook(paint->win_ptr, 2, 0, key_press, (void *)paint);
 //	draw_map(map, paint);
 //	mlx_loop(paint->mlx_ptr);
+	map_val_free(paint->map, paint);
 	return (0);
 }
