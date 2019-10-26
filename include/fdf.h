@@ -23,7 +23,7 @@ typedef	struct		s_point
 	int				x;
 	int 			y;
 	int 			z;
-	char			*color;
+	int				color;
 	struct s_point	*next;
 }					t_point;
 
@@ -94,5 +94,6 @@ void				replace_op(t_point *replace, t_point *new);
 void				replace_op_st(t_point *replace, t_point *new, t_paint *paint);
 void				isometric_(t_point ***map, t_paint *pa);
 void				twist_map_x_y_z(t_paint *paint, t_point *po, t_val *val);
+int					ft_atoi_base(char *str, char *base);
 
 #endif

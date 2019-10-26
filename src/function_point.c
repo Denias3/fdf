@@ -20,7 +20,7 @@ t_point	*create_point(void)
 	po->x = -1;
 	po->y = 0;
 	po->z = -1;
-	po->color = NULL;
+	po->color = 0;
 	po->next = NULL;
 	return (po);
 }
