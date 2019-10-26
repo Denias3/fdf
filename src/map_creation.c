@@ -20,8 +20,6 @@ void		free_points(t_point *po)
 	{
 		tmp = po;
 		po = po->next;
-		if (tmp->color != NULL)
-			free(tmp->color);
 		free(tmp);
 	}
 }
