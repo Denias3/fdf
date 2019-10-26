@@ -66,9 +66,12 @@ int  key_press(int keycode, void *param)
 		if (paint->iso)
 			isometric(paint->map, paint);
 	}
-	else if (keycode == 34)
+	else if (keycode == 34 || keycode == 35)
 	{
-		paint->iso = 1;
+		if (keycode == 34)
+			paint->iso = 1;
+		else
+			paint->iso = 0;
 		paint->between = paint->between_st;
 		paint->shift_x = 0;
 		paint->shift_y = 0;
@@ -78,20 +81,8 @@ int  key_press(int keycode, void *param)
 		replace_op(paint->val->start_point, paint->val->init_point);
 		make_accurate(paint, paint->val);
 		starting_position(paint->val->start_point, paint);
-		isometric(paint->map, paint);
-	}
-	else if (keycode == 35)
-	{
-		paint->iso = 0;
-		paint->between = paint->between_st;
-		paint->shift_x = 0;
-		paint->shift_y = 0;
-		paint->cos_sin_z = 0;
-		paint->cos_sin_x = 0;
-		paint->cos_sin_y = 0;
-		replace_op(paint->val->start_point, paint->val->init_point);
-		make_accurate(paint, paint->val);
-		starting_position(paint->val->start_point, paint);
+		if (keycode == 34)
+			isometric(paint->map, paint);
 	}
 	else if (keycode == 53)
 		exit(0);
