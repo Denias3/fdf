@@ -46,7 +46,6 @@ void	twist_map_x_y_z(t_paint *paint, t_point *po, t_val *val)
 
 	while (po != NULL)
 	{
-//		starting_position(po, paint);
 		x0 = po->x - val->max_x / 2;
 		y0 = po->y - val->max_y / 2;
 		po->y = val->max_y / 2 + y0 * cos(paint->cos_sin_x) + po->z * sin(paint->cos_sin_x);

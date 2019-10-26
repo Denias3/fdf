@@ -39,8 +39,8 @@ LIB_INC = -L libft -lft
 all: $(NAME)
 
 $(NAME): libmake creatdiro $(OBJ)
-	@gcc $(FLAGS) $(INCLUDES) $(LIB_INC) $(OBJ) -o $(NAME)
-# 	-L minilibx/ -lmlx -framework OpenGL -framework AppKit
+	@gcc $(FLAGS) $(INCLUDES) $(LIB_INC) $(OBJ) -o $(NAME) -L minilibx/ -lmlx -framework OpenGL -framework AppKit
+#
 
 $(addprefix $(DIRO)/, %.o): $(addprefix $(DIRSRC)/,%.c)
 	@gcc $(FLAGS) $(INCLUDES) -o $@ -c $<
