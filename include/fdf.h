@@ -92,6 +92,7 @@ void				map_pass(t_point ***map, void f(t_point*, t_paint*), t_paint *pa);
 void				search_map_center(t_point ***map, t_paint *pa);
 void				plus(t_point *point, t_paint *pa);
 void				replace_op(t_point *replace, t_point *new);
+void				replace_op_st(t_point *replace, t_point *new, t_paint *paint);
 void				isometric_(t_point ***map, t_paint *pa);
 void				twist_map_x_y_z(t_paint *paint, t_point *po, t_val *val);
 
