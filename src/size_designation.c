@@ -61,6 +61,7 @@ void		size_designation(t_paint *pa, t_val *val, int percent)
 	find_indentation(pa, val, direction, percent);
 	if (pa->between == 0)
 		pa->between = 1;
+	pa->between_st = pa->between;
 	make_accurate(pa, val);
 	printf("pa->between - %d\n", pa->between);
 }

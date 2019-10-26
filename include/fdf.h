@@ -40,6 +40,7 @@ typedef	struct		s_paint
 {
 	t_val			*val;
 	t_point			***map;
+	int 			iso;
 	int 			win_x;
 	int 			win_y;
 	void			*mlx_ptr;
@@ -49,6 +50,7 @@ typedef	struct		s_paint
 	int				field_width;
 	int				field_height;
 	int				between;
+	int				between_st;
 	int 			*size;
 	int				*mid;
 	int 			shift_x;

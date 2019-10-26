@@ -31,6 +31,8 @@ int  key_press(int keycode, void *param)
 		starting_position(paint->val->start_point, paint);
 		twist_map_x_y(paint, paint->val->start_point, paint->val);
 		twist_map_z(paint, paint->val->start_point, paint->val);
+		if (paint->iso)
+			isometric(paint->map, paint);
 	}
 	else if ((keycode == 27 || keycode == 78) && paint->between > 0)
 	{
@@ -38,41 +40,61 @@ int  key_press(int keycode, void *param)
 		starting_position(paint->val->start_point, paint);
 		twist_map_x_y(paint, paint->val->start_point, paint->val);
 		twist_map_z(paint, paint->val->start_point, paint->val);
+		if (paint->iso)
+			isometric(paint->map, paint);
 	}
 	else if (keycode == 13 || keycode == 1 || keycode == 0 || keycode == 2 ||
 			keycode == 12 || keycode == 14)
 	{
 		if (keycode == 13)
-		{
 			paint->cos_sin_x += 0.174533;
-		}
 		else if (keycode == 1)
-		{
 			paint->cos_sin_x -= 0.174533;
-		}
 		else if (keycode == 0)
-		{
 			paint->cos_sin_y += 0.174533;
-		}
 		else if (keycode == 2)
-		{
 			paint->cos_sin_y -= 0.174533;
-		}
 		else if (keycode == 12)
-		{
 			paint->cos_sin_z += 0.174533;
-		}
 		else if (keycode == 14)
-		{
 			paint->cos_sin_z -= 0.174533;
-		}
-
 		replace_op(paint->val->start_point, paint->val->init_point);
 		make_accurate(paint, paint->val);
 		starting_position(paint->val->start_point, paint);
 		twist_map_x_y(paint, paint->val->start_point, paint->val);
 		twist_map_z(paint, paint->val->start_point, paint->val);
+		if (paint->iso)
+			isometric(paint->map, paint);
 	}
+	else if (keycode == 34)
+	{
+		paint->iso = 1;
+		paint->between = paint->between_st;
+		paint->shift_x = 0;
+		paint->shift_y = 0;
+		paint->cos_sin_z = 0;
+		paint->cos_sin_x = 0;
+		paint->cos_sin_y = 0;
+		replace_op(paint->val->start_point, paint->val->init_point);
+		make_accurate(paint, paint->val);
+		starting_position(paint->val->start_point, paint);
+		isometric(paint->map, paint);
+	}
+	else if (keycode == 35)
+	{
+		paint->iso = 0;
+		paint->between = paint->between_st;
+		paint->shift_x = 0;
+		paint->shift_y = 0;
+		paint->cos_sin_z = 0;
+		paint->cos_sin_x = 0;
+		paint->cos_sin_y = 0;
+		replace_op(paint->val->start_point, paint->val->init_point);
+		make_accurate(paint, paint->val);
+		starting_position(paint->val->start_point, paint);
+	}
+	else if (keycode == 53)
+		exit(0);
 	mlx_clear_window(paint->mlx_ptr, paint->win_ptr);
 	draw_map(paint->map, paint);
 	return (0);
