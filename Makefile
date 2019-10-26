@@ -46,7 +46,7 @@ $(addprefix $(DIRO)/, %.o): $(addprefix $(DIRSRC)/,%.c)
 	@gcc $(FLAGS) $(INCLUDES) -o $@ -c $<
 
 creatdiro:
-	@mkdir -p $(DIRO)
+	@mkdir $(DIRO)
 	@echo "-> add dir obj"
 
 libmake:

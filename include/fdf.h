@@ -14,7 +14,7 @@
 # define FDF_FDF_H
 
 # include "../libft/libft.h"
-# include "../minilibx/mlx.h"
+//# include "../minilibx/mlx.h"
 #include <stdio.h> /* Удалить (printf();) */
 #include <math.h>
 
