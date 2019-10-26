@@ -30,6 +30,10 @@ void	distance(t_paint *paint)
 	make_accurate(paint, paint->val);
 	if (paint->between > 1)
 		paint->between = paint->between - 1;
+	starting_position(paint->val->start_point, paint);
+	twist_map_x_y_z(paint, paint->val->start_point, paint->val);
+	if (paint->iso)
+		isometric(paint->map, paint);
 }
 
 void	approach(t_paint *paint)
@@ -37,4 +41,8 @@ void	approach(t_paint *paint)
 	replace_op(paint->val->start_point, paint->val->init_point);
 	make_accurate(paint, paint->val);
 	paint->between = paint->between + 1;
+	starting_position(paint->val->start_point, paint);
+	twist_map_x_y_z(paint, paint->val->start_point, paint->val);
+	if (paint->iso)
+		isometric(paint->map, paint);
 }
