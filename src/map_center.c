@@ -32,8 +32,8 @@ void		search_map_center(t_point ***map, t_paint *pa)
 
 //	x = ((pa->size[0] - pa->size[1]) / 2) + pa->size[1];
 //	y = ((pa->size[2] - pa->size[3]) / 2) + pa->size[3];
-	x = map[pa->val->max_y / 2][pa->val->max_x / 2]->x;
-	y = map[pa->val->max_y / 2][pa->val->max_x / 2]->y;
+	x = ((map[pa->val->max_y][pa->val->max_x]->x - map[0][0]->x) / 2) + map[0][0]->x;
+	y = ((map[pa->val->max_y][pa->val->max_x]->y - map[0][0]->y) / 2) + map[0][0]->y;
 	pa->mid[0] = (pa->win_x / 2) - x;
 	pa->mid[1] = (pa->win_y / 2) - y;
 //	printf("123\n");
