@@ -12,26 +12,28 @@
 
 #include "../include/fdf.h"
 
-static void search_size(t_point *point, t_paint *pa)
-{
-	point->x > pa->size[0] ? pa->size[0] = point->x : pa->size[0]; // больший x
-	point->x < pa->size[1] ? pa->size[1] = point->x : pa->size[1]; // меньший x
-	point->y > pa->size[2] ? pa->size[2] = point->y : pa->size[2]; // больший y
-	point->y < pa->size[3] ? pa->size[3] = point->y : pa->size[3]; // меньший y
-}
+//static void search_size(t_point *point, t_paint *pa)
+//{
+//	point->x > pa->size[0] ? pa->size[0] = point->x : pa->size[0]; // больший x
+//	point->x < pa->size[1] ? pa->size[1] = point->x : pa->size[1]; // меньший x
+//	point->y > pa->size[2] ? pa->size[2] = point->y : pa->size[2]; // больший y
+//	point->y < pa->size[3] ? pa->size[3] = point->y : pa->size[3]; // меньший y
+//}
 
 void		search_map_center(t_point ***map, t_paint *pa)
 {
-	pa->size[0] = -99999999;
-	pa->size[1] = 99999999;
-	pa->size[2] = -99999999;
-	pa->size[3] = 99999999;
-	map_pass(map, search_size, pa);
+//	pa->size[0] = -99999999;
+//	pa->size[1] = 99999999;
+//	pa->size[2] = -99999999;
+//	pa->size[3] = 99999999;
+//	map_pass(map, search_size, pa);
 	int 	x;
 	int 	y;
 
-	x = ((pa->size[0] - pa->size[1]) / 2) + pa->size[1];
-	y = ((pa->size[2] - pa->size[3]) / 2) + pa->size[3];
+//	x = ((pa->size[0] - pa->size[1]) / 2) + pa->size[1];
+//	y = ((pa->size[2] - pa->size[3]) / 2) + pa->size[3];
+	x = map[pa->val->max_y / 2][pa->val->max_x / 2]->x;
+	y = map[pa->val->max_y / 2][pa->val->max_x / 2]->y;
 	pa->mid[0] = (pa->win_x / 2) - x;
 	pa->mid[1] = (pa->win_y / 2) - y;
 //	printf("123\n");

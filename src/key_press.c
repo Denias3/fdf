@@ -28,14 +28,14 @@ int  key_press(int keycode, void *param)
 	else if ((keycode == 24 || keycode == 69) && paint->between < 1000)
 	{
 		approach(paint);
-//		starting_position(paint->val->start_point, paint);
+		starting_position(paint->val->start_point, paint);
 		twist_map_x_y(paint, paint->val->start_point, paint->val);
 		twist_map_z(paint, paint->val->start_point, paint->val);
 	}
 	else if ((keycode == 27 || keycode == 78) && paint->between > 0)
 	{
 		distance(paint);
-//		starting_position(paint->val->start_point, paint);
+		starting_position(paint->val->start_point, paint);
 		twist_map_x_y(paint, paint->val->start_point, paint->val);
 		twist_map_z(paint, paint->val->start_point, paint->val);
 	}
@@ -67,9 +67,9 @@ int  key_press(int keycode, void *param)
 			paint->cos_sin_z -= 0.174533;
 		}
 
-//		replace_op(paint->val->start_point, paint->val->init_point);
-//		make_accurate(paint, paint->val);
-//		starting_position(paint->val->start_point, paint);
+		replace_op(paint->val->start_point, paint->val->init_point);
+		make_accurate(paint, paint->val);
+		starting_position(paint->val->start_point, paint);
 		twist_map_x_y(paint, paint->val->start_point, paint->val);
 		twist_map_z(paint, paint->val->start_point, paint->val);
 	}
