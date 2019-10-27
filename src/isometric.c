@@ -12,7 +12,7 @@
 
 #include "../include/fdf.h"
 
-static void iso(t_point *point, t_paint *pa)
+static void	iso(t_point *point, t_paint *pa)
 {
 	double	previous_x;
 	double	previous_y;
@@ -25,7 +25,7 @@ static void iso(t_point *point, t_paint *pa)
 	pa->shift_x++;
 }
 
-void plus(t_point *point, t_paint *pa)
+void		plus(t_point *point, t_paint *pa)
 {
 	point->x += pa->mid[0] + pa->shift_x;
 	point->y += pa->mid[1] + pa->shift_y;
@@ -33,8 +33,8 @@ void plus(t_point *point, t_paint *pa)
 
 void		map_pass(t_point ***map, void f(t_point*, t_paint*), t_paint *pa)
 {
-	int 	x;
-	int 	y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (map[y] != NULL)
@@ -54,9 +54,4 @@ void		isometric(t_point ***map, t_paint *pa)
 	map_pass(map, iso, pa);
 	search_map_center(map, pa);
 	map_pass(map, plus, pa);
-//	print_line(pa, x, y, 1000, 500, 0xFF00FF);
-//	print_line(pa, pa->size[0], pa->size[2], pa->size[1], pa->size[3], 0xFF00FF);
-//	print_line(pa, pa->size[1], pa->size[2], pa->size[0], pa->size[3], 0xFF00FF);
-
-//	printf("pa->size[0] - %d\npa->size[2] - %d\npa->size[1] - %d\npa->size[3] - %d\nx - %d\ny - %d\npa->mid[0] - %d\npa->mid[1] - %d\n", pa->size[0], pa->size[2], pa->size[1], pa->size[3], x, y, pa->mid[0], pa->mid[1]);
 }

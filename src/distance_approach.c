@@ -24,31 +24,40 @@ void	replace_op(t_point *replace, t_point *new)
 	}
 }
 
+void	replace_op_st_2(t_point *po, t_point *new, t_paint *paint)
+{
+	po->x = new->x;
+	po->z = new->z;
+	po->y = new->y;
+	po->x = paint->between * po->x;
+	po->y = paint->between * po->y;
+	po->z = paint->between * po->z;
+	po->x += paint->h_indent;
+	po->y += paint->u_indent;
+}
+
 void	replace_op_st(t_point *po, t_point *new, t_paint *paint)
 {
-	int y0;
-	int x0;
+	int	y0;
+	int	x0;
 
 	while (po != NULL)
 	{
-		po->x = new->x;
-		po->z = new->z;
-		po->y = new->y;
-		po->x = paint->between * po->x;
-		po->y = paint->between * po->y;
-		po->z = paint->between * po->z;
-		po->x += paint->h_indent;
-		po->y += paint->u_indent;
+		replace_op_st_2(po, new, paint);
 		x0 = po->x - paint->val->max_x / 2;
 		y0 = po->y - paint->val->max_y / 2;
-		po->y = paint->val->max_y / 2 + y0 * cos(paint->cos_sin_x) + po->z * sin(paint->cos_sin_x);
+		po->y = paint->val->max_y / 2 + y0 *
+				cos(paint->cos_sin_x) + po->z * sin(paint->cos_sin_x);
 		po->z = -y0 * sin(paint->cos_sin_x) + po->z * cos(paint->cos_sin_x);
-		po->x = paint->val->max_x / 2 + x0 * cos(paint->cos_sin_y) + po->z * sin(paint->cos_sin_y);
+		po->x = paint->val->max_x / 2 + x0 *
+				cos(paint->cos_sin_y) + po->z * sin(paint->cos_sin_y);
 		po->z = -x0 * sin(paint->cos_sin_y) + po->z * cos(paint->cos_sin_y);
 		x0 = po->x - paint->val->max_x / 2;
 		y0 = po->y - paint->val->max_y / 2;
-		po->x = paint->val->max_x / 2 + x0 * cos(paint->cos_sin_z) - y0 * sin(paint->cos_sin_z);
-		po->y = paint->val->max_x / 2 + x0 * sin(paint->cos_sin_z) + y0 * cos(paint->cos_sin_z);
+		po->x = paint->val->max_x / 2 + x0 *
+				cos(paint->cos_sin_z) - y0 * sin(paint->cos_sin_z);
+		po->y = paint->val->max_x / 2 + x0 *
+				sin(paint->cos_sin_z) + y0 * cos(paint->cos_sin_z);
 		po = po->next;
 		new = new->next;
 	}

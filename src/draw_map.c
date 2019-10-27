@@ -14,8 +14,9 @@
 
 void	draw_map(t_point ***map, t_paint *paint)
 {
-	int 	x;
-	int 	y;
+	int	x;
+	int	y;
+	int var[10];
 
 	y = 0;
 	while (map[y] != NULL)
@@ -26,9 +27,9 @@ void	draw_map(t_point ***map, t_paint *paint)
 			paint->shift_x++;
 			paint->shift_x--;
 			if (map[y][x + 1] && map[y][x])
-				draw_line(map[y][x],map[y][x + 1], paint);
+				draw_line(map[y][x], map[y][x + 1], paint, var);
 			if (map[y + 1] && map[y + 1][x] && map[y][x])
-				draw_line(map[y][x], map[y + 1][x], paint);
+				draw_line(map[y][x], map[y + 1][x], paint, var);
 			x++;
 		}
 		y++;

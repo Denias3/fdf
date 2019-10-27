@@ -22,8 +22,6 @@ SRC = fdf.c\
 		map_center.c\
 		ft_atoi_base.c\
 		validation_2.c\
-		\
-		debag.c
 
 
 DIRSRC = src
