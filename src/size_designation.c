@@ -13,9 +13,9 @@
 #include "../include/fdf.h"
 
 #define MAX(max_x, max_y) (max_x >= max_y ? max_x : max_y)
-#define DD(max, max_x) (max == max_x ? 2 : 1) /* determination of direction */
+#define DD(max, max_x) (max == max_x ? 2 : 1)
 
-void	make_accurate(t_paint *pa, t_val *val)
+void		make_accurate(t_paint *pa, t_val *val)
 {
 	pa->field_width = pa->between * val->max_x;
 	pa->field_height = pa->between * val->max_y;
@@ -23,7 +23,8 @@ void	make_accurate(t_paint *pa, t_val *val)
 	pa->u_indent = (pa->win_y - pa->field_height) / 2;
 }
 
-static void	find_indentation(t_paint *pa, t_val *val, int diraction, int percent)
+static void	find_indentation(t_paint *pa, t_val *val,
+		int diraction, int percent)
 {
 	if (diraction == 1)
 	{
@@ -54,7 +55,7 @@ static void	find_indentation(t_paint *pa, t_val *val, int diraction, int percent
 void		size_designation(t_paint *pa, t_val *val, int percent)
 {
 	double	max;
-	int		direction; /* 1 = upright, 2 = horizontally */
+	int		direction;
 
 	max = MAX(val->max_x, val->max_y);
 	direction = DD(max, val->max_x);
@@ -63,5 +64,4 @@ void		size_designation(t_paint *pa, t_val *val, int percent)
 		pa->between = 1;
 	pa->between_st = pa->between;
 	make_accurate(pa, val);
-//	printf("pa->between - %d\n", pa->between);
 }
