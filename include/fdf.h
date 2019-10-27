@@ -72,7 +72,7 @@ t_point				***map_creation(t_point *po, t_val *val);
 void				map_val_free(t_point ***map, t_paint *paint);
 int					init_window(t_point	***map, t_val *val);
 t_paint				*create_paint(t_val *val, t_point ***map);
-void				draw_line(t_point *one, t_point *two, t_paint *paint);
+void				draw_line(t_point *one, t_point *two, t_paint *paint, int var[10]);
 void				size_designation(t_paint *pa, t_val *val, int percent);
 void				starting_position(t_point *po, t_paint *paint);
 int					ft_abs(int num);

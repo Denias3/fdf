@@ -12,11 +12,33 @@
 
 #include "../include/fdf.h"
 
-int  key_press(int keycode, void *param)
+int		key_press_3(int keycode, t_paint *paint)
 {
-	t_paint *paint;
+	if (keycode == 34 || keycode == 35)
+	{
+		if (keycode == 34)
+			paint->iso = 1;
+		else
+			paint->iso = 0;
+		paint->between = paint->between_st;
+		paint->shift_x = 0;
+		paint->shift_y = 0;
+		paint->cos_sin_z = 0;
+		paint->cos_sin_x = 0;
+		paint->cos_sin_y = 0;
+		replace_op(paint->val->start_point, paint->val->init_point);
+		make_accurate(paint, paint->val);
+		starting_position(paint->val->start_point, paint);
+		if (keycode == 34)
+			isometric(paint->map, paint);
+	}
+	else
+		return (0);
+	return (1);
+}
 
-	paint = param;
+int		key_press_2(int keycode, t_paint *paint)
+{
 	if (keycode == 126)
 		shift_map(paint, 1);
 	else if (keycode == 124)
@@ -29,6 +51,18 @@ int  key_press(int keycode, void *param)
 		approach(paint);
 	else if ((keycode == 27 || keycode == 78) && paint->between > 0)
 		distance(paint);
+	else
+		return (0);
+	return (1);
+}
+
+int		key_press(int keycode, void *param)
+{
+	t_paint *paint;
+
+	paint = param;
+	if (key_press_2(keycode, paint))
+		;
 	else if (keycode == 13 || keycode == 1 || keycode == 0 || keycode == 2 ||
 			keycode == 12 || keycode == 14)
 	{
@@ -48,24 +82,8 @@ int  key_press(int keycode, void *param)
 		if (paint->iso)
 			isometric(paint->map, paint);
 	}
-	else if (keycode == 34 || keycode == 35)
-	{
-		if (keycode == 34)
-			paint->iso = 1;
-		else
-			paint->iso = 0;
-		paint->between = paint->between_st;
-		paint->shift_x = 0;
-		paint->shift_y = 0;
-		paint->cos_sin_z = 0;
-		paint->cos_sin_x = 0;
-		paint->cos_sin_y = 0;
-		replace_op(paint->val->start_point, paint->val->init_point);
-		make_accurate(paint, paint->val);
-		starting_position(paint->val->start_point, paint);
-		if (keycode == 34)
-			isometric(paint->map, paint);
-	}
+	else if (key_press_3(keycode, paint))
+		;
 	else if (keycode == 53)
 		exit(0);
 	mlx_clear_window(paint->mlx_ptr, paint->win_ptr);

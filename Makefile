@@ -21,8 +21,6 @@ SRC = fdf.c\
 		shift.c\
 		map_center.c\
 		ft_atoi_base.c\
-		\
-		debag.c
 
 
 DIRSRC = src
