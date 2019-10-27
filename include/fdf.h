@@ -69,7 +69,7 @@ void				map_val_free(t_point ***map, t_paint *paint);
 int					init_window(t_point	***map, t_val *val);
 t_paint				*create_paint(t_val *val, t_point ***map);
 void				draw_line(t_point *one, t_point *two,
-		t_paint *paint, int var[10]);
+					t_paint *paint, int var[10]);
 void				size_designation(t_paint *pa, t_val *val, int percent);
 void				starting_position(t_point *po, t_paint *paint);
 int					ft_abs(int num);
@@ -84,12 +84,12 @@ void				approach(t_paint *paint);
 void				shift_map(t_paint *paint, int sh);
 t_point				*copy_points(t_point *po);
 void				map_pass(t_point ***map, void f(t_point*,
-		t_paint*), t_paint *pa);
+					t_paint*), t_paint *pa);
 void				search_map_center(t_point ***map, t_paint *pa);
 void				plus(t_point *point, t_paint *pa);
 void				replace_op(t_point *replace, t_point *new);
 void				replace_op_st(t_point *replace, t_point *new,
-		t_paint *paint);
+					t_paint *paint);
 void				isometric_(t_point ***map, t_paint *pa);
 void				twist_map_x_y_z(t_paint *paint, t_point *po, t_val *val);
 unsigned int		ft_atoi_base(char *str);
