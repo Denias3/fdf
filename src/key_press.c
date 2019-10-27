@@ -12,6 +12,22 @@
 
 #include "../include/fdf.h"
 
+void	key_press_4(int keycode, t_paint *paint)
+{
+	if (keycode == 13)
+		paint->cos_sin_x += 0.174533;
+	else if (keycode == 1)
+		paint->cos_sin_x -= 0.174533;
+	else if (keycode == 0)
+		paint->cos_sin_y += 0.174533;
+	else if (keycode == 2)
+		paint->cos_sin_y -= 0.174533;
+	else if (keycode == 12)
+		paint->cos_sin_z += 0.174533;
+	else if (keycode == 14)
+		paint->cos_sin_z -= 0.174533;
+}
+
 int		key_press_3(int keycode, t_paint *paint)
 {
 	if (keycode == 34 || keycode == 35)
@@ -66,18 +82,7 @@ int		key_press(int keycode, void *param)
 	else if (keycode == 13 || keycode == 1 || keycode == 0 || keycode == 2 ||
 			keycode == 12 || keycode == 14)
 	{
-		if (keycode == 13)
-			paint->cos_sin_x += 0.174533;
-		else if (keycode == 1)
-			paint->cos_sin_x -= 0.174533;
-		else if (keycode == 0)
-			paint->cos_sin_y += 0.174533;
-		else if (keycode == 2)
-			paint->cos_sin_y -= 0.174533;
-		else if (keycode == 12)
-			paint->cos_sin_z += 0.174533;
-		else if (keycode == 14)
-			paint->cos_sin_z -= 0.174533;
+		key_press_4(keycode, paint);
 		replace_op_st(paint->val->start_point, paint->val->init_point, paint);
 		if (paint->iso)
 			isometric(paint->map, paint);
